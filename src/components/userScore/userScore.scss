@@ -1,0 +1,23 @@
+.user-score-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    padding: 0.1em 1em;
+
+    .user-image{
+        height: 2em;
+        width: 2em;
+        border-radius: 50%;
+        background-color: red;
+        border: solid 2px black;
+    }
+    .user-username{
+        flex: 1;
+        margin: 0 1em;
+    }
+    .user-score{
+        font-size: 1.5em;
+        margin:0
+    }
+}
