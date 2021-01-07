@@ -1,6 +1,6 @@
-import { Store } from '@reduxjs/toolkit';
+// import { Store } from '@reduxjs/toolkit';
 
-const createSocketClient = (store: Store) => {
+const createSocketClient = (/* store: Store */) => {
   // Connect to the client
 };
 
