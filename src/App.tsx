@@ -1,14 +1,19 @@
 import React from 'react';
+
+import { Switch, Route } from 'react-router-dom';
+
+import HomePage from './pages/home/HomePage';
+import GameRouter from './pages/GameRouter';
+
 import './styles/bootstrap.scss';
 import './styles/index.scss';
 
-import GamePage from './pages/game/GamePage';
-
 function App() {
   return (
-    <>
-      <GamePage />
-    </>
+    <Switch>
+      <Route path="/" exact component={HomePage} />
+      <Route path="/:roomID" exact component={GameRouter} />
+    </Switch>
   );
 }
 

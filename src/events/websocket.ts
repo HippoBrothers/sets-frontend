@@ -1,12 +1,12 @@
 import { Store } from '@reduxjs/toolkit';
 
 import { io, Socket } from 'socket.io-client';
+import appHistory from '../history';
 import {
   clearBoard, endSelection, playerBuzz, updateGame, UpdateGamePayload,
 } from '../store/slices/gameSlice';
 import {
-  gameOver,
-  joinRoom, playerBuzzed, playerConnect, PlayerConnectPayload, playGame, updateScoreBoard,
+  playerConnected, PlayerConnectPayload, setGameState, updateScoreBoard,
 } from '../store/slices/roomSlice';
 import type { RootState } from '../store/store';
 
@@ -44,6 +44,12 @@ export const sendVoteAddCards = () => {
   }
 };
 
+export const sendCreateRoom = (userName: string) => {
+  if (socket) {
+    socket.emit('create', { name: userName });
+  }
+};
+
 const createSocketClient = (store: Store) => {
   // Connect to the client
   socket = io('http://192.168.1.28:4000');
@@ -53,9 +59,9 @@ const createSocketClient = (store: Store) => {
     console.log(data);
 
     if (data.type === 'waiting') {
-      store.dispatch(joinRoom());
+      store.dispatch(setGameState(data.type));
     } else if (data.type === 'playing') {
-      store.dispatch(playGame());
+      store.dispatch(setGameState(data.type));
       store.dispatch(updateGame(data as UpdateGamePayload));
       // Reset selected cards
       store.dispatch(updateScoreBoard(data.scoreboard));
@@ -63,20 +69,21 @@ const createSocketClient = (store: Store) => {
         store.dispatch(endSelection());
       }
     } else if (data.type === 'buzzed') {
-      store.dispatch(playerBuzzed());
+      store.dispatch(setGameState(data.type));
+
       store.dispatch(playerBuzz(data.payload));
     } else if (data.type === 'end') {
       store.dispatch(clearBoard());
-      store.dispatch(gameOver());
+      store.dispatch(setGameState(data.type));
     }
   });
 
   socket.on('welcome', (data: PlayerConnectPayload) => {
     console.log(data);
-    store.dispatch(playerConnect(data));
+    store.dispatch(playerConnected(data));
+    // eslint-disable-next-line no-restricted-globals
+    appHistory.push(`/${data.roomID}`);
   });
-  // create a room
-  socket.emit('create', {});
 };
 
 export default createSocketClient;

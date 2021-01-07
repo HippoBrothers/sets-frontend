@@ -28,7 +28,6 @@ const Buttons: React.FunctionComponent<ButtonsProps> = () => {
         </Button>
         )
     }
-
       {
         gameState === 'playing' && (
         <>

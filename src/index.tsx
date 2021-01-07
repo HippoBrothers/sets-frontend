@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { Router } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
@@ -9,12 +10,16 @@ import { store } from './store/store';
 
 import createSocketClient from './events/websocket';
 
+import appHistory from './history';
+
 createSocketClient(store);
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <Router history={appHistory}>
+        <App />
+      </Router>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root'),

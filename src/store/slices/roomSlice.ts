@@ -37,33 +37,23 @@ const roomSlice = createSlice({
   name: 'room',
   initialState,
   reducers: {
-    joinRoom(state: RoomSlice /* action: PayloadAction<JoinRoomPayload> */) {
-      // state.roomID = action.payload.roomID;
-      state.gameState = 'waiting';
+    setGameState(state: RoomSlice, action: PayloadAction<GameState>) {
+      state.gameState = action.payload;
     },
-    playerConnect(state: RoomSlice, action: PayloadAction<PlayerConnectPayload>) {
+    playerConnected(state: RoomSlice, action: PayloadAction<PlayerConnectPayload>) {
       state.roomID = action.payload.roomID;
       state.playerID = action.payload.playerID;
       state.playerName = action.payload.name;
       state.secret = action.payload.secret;
     },
-    playGame(state: RoomSlice) {
-      state.gameState = 'playing';
-    },
     updateScoreBoard(state: RoomSlice, action: PayloadAction<Array<Score>>) {
       state.scoreBoard = action.payload;
-    },
-    playerBuzzed(state: RoomSlice) {
-      state.gameState = 'buzzed';
-    },
-    gameOver(state: RoomSlice) {
-      state.gameState = 'end';
     },
   },
 });
 
 export const {
-  joinRoom, playerConnect, updateScoreBoard, playerBuzzed, playGame, gameOver,
+  playerConnected, updateScoreBoard, setGameState,
 } = roomSlice.actions;
 
 export const getRoomBaseState = (state: RootState): RoomSlice => state.room;
