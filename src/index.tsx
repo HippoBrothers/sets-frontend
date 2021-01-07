@@ -7,6 +7,10 @@ import reportWebVitals from './reportWebVitals';
 import './index.css';
 import { store } from './store/store';
 
+import createSocketClient from './events/websocket';
+
+createSocketClient(store);
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

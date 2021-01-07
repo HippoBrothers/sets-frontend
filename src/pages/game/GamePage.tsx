@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
 import Board from '../../components/board/Board';
 import ScoreBoard from '../../components/scoreBoard/ScoreBoard';
+import Buttons from './Buttons';
 
 import './GamePage.scss';
 
@@ -18,8 +18,9 @@ const GamePage: React.FunctionComponent<GamePageProps> = () => (
       {/* TODO à déplacer dans un nouveau composant
                 Ne pas oublier de bouger le style */}
       <div className="game-button-bar">
-        <Button size="lg" variant="primary" block>Set !</Button>
-        <Button size="sm" variant="secondary" block>Je ne vois rien</Button>
+        <Buttons />
+        {/* <Button size="lg" variant="primary" block>Set !</Button>
+        <Button size="sm" variant="secondary" block>Je ne vois rien</Button> */}
       </div>
 
     </div>
