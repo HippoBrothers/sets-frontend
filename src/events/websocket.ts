@@ -63,9 +63,8 @@ const createSocketClient = (store: Store) => {
         store.dispatch(endSelection());
       }
     } else if (data.type === 'buzzed') {
-      // TODO mettre à jour le user qui a buzze
-      store.dispatch(playerBuzzed(data.payload.playerID));
-      store.dispatch(playerBuzz(data.payload.playerID));
+      store.dispatch(playerBuzzed());
+      store.dispatch(playerBuzz(data.payload));
     } else if (data.type === 'end') {
       store.dispatch(clearBoard());
       store.dispatch(gameOver());

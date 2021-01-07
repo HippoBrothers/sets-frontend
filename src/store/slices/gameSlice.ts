@@ -14,6 +14,7 @@ interface GameSlice {
   leftInDeck: number,
   selectedCards: Array<any>,
   buzzingPlayer?: string;
+  buzzingTimeLeft?: number;
 }
 
 const initialState: GameSlice = {
@@ -31,7 +32,9 @@ const gameSlice = createSlice({
       state.leftInDeck = action.payload.cardsLeft;
     },
     selectCard(state: GameSlice, action: PayloadAction<number>) {
-      state.selectedCards.push(action.payload);
+      if (state.selectedCards.length < 3) {
+        state.selectedCards.push(action.payload);
+      }
     },
     endSelection(state: GameSlice) {
       state.selectedCards = [];
@@ -42,8 +45,13 @@ const gameSlice = createSlice({
       state.selectedCards = [];
       state.leftInDeck = 81;
     },
-    playerBuzz(state: GameSlice, action: PayloadAction<string | undefined>) {
-      state.buzzingPlayer = action.payload;
+    playerBuzz(state: GameSlice, action: PayloadAction<{playerID?: string, time: number}>) {
+      state.buzzingPlayer = action.payload.playerID;
+      if (!action.payload.playerID) {
+        state.buzzingTimeLeft = undefined;
+      } else {
+        state.buzzingTimeLeft = action.payload.time;
+      }
     },
   },
 });

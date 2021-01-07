@@ -16,41 +16,57 @@ const Buttons: React.FunctionComponent<ButtonsProps> = () => {
   const buzzingPlayer = useSelector((state: RootState) => state.game.buzzingPlayer);
   return (
     <>
-      <Button
-        size="lg"
-        block
-        variant="warning"
-        disabled={gameState !== 'waiting'}
-        onClick={() => dispatch(startVote())}
-      >
-        Start
-      </Button>
-      <Button
-        size="lg"
-        block
-        variant="warning"
-        disabled={gameState !== 'playing'}
-        onClick={() => dispatch(buzz())}
-      >
-        Buzz
-      </Button>
-      <Button
-        size="lg"
-        block
-        variant="primary"
-        disabled={!(gameState === 'buzzed' && currentPlayer === buzzingPlayer)}
-        onClick={() => dispatch(validateCards())}
-      >
-        Validate
-      </Button>
-      <Button
-        block
-        variant="secondary"
-        disabled={gameState !== 'playing'}
-        onClick={() => dispatch(voteAddCards())}
-      >
-        Je ne vois rien
-      </Button>
+      {
+        (gameState === 'waiting' || gameState === 'end') && (
+        <Button
+          size="lg"
+          block
+          variant="warning"
+          onClick={() => dispatch(startVote())}
+        >
+          Start
+        </Button>
+        )
+    }
+
+      {
+        gameState === 'playing' && (
+        <>
+          <Button
+            size="lg"
+            block
+            variant="warning"
+            disabled={gameState !== 'playing'}
+            onClick={() => dispatch(buzz())}
+          >
+            Buzz
+          </Button>
+          <Button
+            block
+            variant="secondary"
+            disabled={gameState !== 'playing'}
+            onClick={() => dispatch(voteAddCards())}
+          >
+            Je ne vois rien
+          </Button>
+        </>
+        )
+    }
+
+      {
+    (gameState === 'buzzed' && currentPlayer === buzzingPlayer) && (
+    <Button
+      size="lg"
+      block
+      variant="primary"
+      disabled={!(gameState === 'buzzed' && currentPlayer === buzzingPlayer)}
+      onClick={() => dispatch(validateCards())}
+    >
+      Validate
+    </Button>
+    )
+    }
+
     </>
   );
 };

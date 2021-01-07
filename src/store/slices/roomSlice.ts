@@ -26,8 +26,6 @@ interface RoomSlice {
   secret?: string,
 
   scoreBoard: Array<Score>;
-
-  buzzingPlayer?: string;
 }
 
 const initialState: RoomSlice = {
@@ -55,9 +53,8 @@ const roomSlice = createSlice({
     updateScoreBoard(state: RoomSlice, action: PayloadAction<Array<Score>>) {
       state.scoreBoard = action.payload;
     },
-    playerBuzzed(state: RoomSlice, action: PayloadAction<string>) {
+    playerBuzzed(state: RoomSlice) {
       state.gameState = 'buzzed';
-      state.buzzingPlayer = action.payload;
     },
     gameOver(state: RoomSlice) {
       state.gameState = 'end';
