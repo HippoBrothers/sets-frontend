@@ -1,0 +1,90 @@
+@import "~bootstrap/scss/bootstrap-grid.scss";
+
+.sets-page.sets-page--home {
+  background-color: orange;
+
+  height: 100%;
+  overflow: auto;
+  padding: 0 2em;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .sets-logo {
+    font-size: 10em;
+  }
+
+  .join-forms {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    @include media-breakpoint-up(md) {
+        padding: 2em;
+    }
+
+    .inputs {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      & > *:not(:last-child) {
+        margin-bottom: 1em;
+      }
+      margin-bottom: 1.5em;
+    }
+
+    @include media-breakpoint-up(md) {
+      .inputs {
+        flex-direction: row;
+        & > *:not(:last-child) {
+          margin-right: 1em;
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    input {
+      background-color: transparent;
+      border: none;
+      border-radius: 0;
+      border-bottom: solid 3px rgba(70, 70, 70, 0.3);
+
+      color: black;
+
+      &::placeholder {
+        color: rgba(0, 0, 0, 0.4);
+      }
+
+      &:focus {
+        box-shadow: none;
+        border-color: red;
+      }
+    }
+
+    .btn {
+      border-radius: 0;
+
+      width: 15em;
+      max-width: 100%;
+      &:focus {
+        box-shadow: none;
+      }
+    }
+
+    & > * {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+
+      &:not(:last-child) {
+        margin-bottom: 2em;
+      }
+    }
+  }
+}
