@@ -24,7 +24,8 @@ const ScoreBoard: React.FunctionComponent<ScoreBoardProps> = () => {
       </h4>
       { gameState === 'playing' && (
       <h4>
-        {cardsLeftInDeck}
+        Cartes restantes :
+          {cardsLeftInDeck}
       </h4>
       )}
       {
