@@ -1,4 +1,6 @@
-import { createBrowserHistory } from "history";
+/* eslint-disable */
+
+import { createBrowserHistory } from 'history';
 
 const appHistory = createBrowserHistory();
 
