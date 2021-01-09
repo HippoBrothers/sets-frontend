@@ -58,7 +58,7 @@ export const sendJoinRoom = (param: any) => {
 
 const createSocketClient = (store: Store) => {
   // Connect to the client
-  socket = io('http://192.168.1.28:4000');
+  socket = io('http://192.168.0.27:4000');
   // Créer une room
   socket.on('stateChanged', (data: any) => {
     const currentState = (store.getState() as RootState).room.gameState;

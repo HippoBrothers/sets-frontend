@@ -14,6 +14,7 @@ const ScoreBoard: React.FunctionComponent<ScoreBoardProps> = () => {
   const timeLeft = useSelector((state: RootState) => state.game.buzzingTimeLeft);
   const gameState = useSelector((state: RootState) => state.room.gameState);
   const users = useSelector((state: RootState) => state.room.scoreBoard);
+
   return (
     <div className="score-board">
       <h1>Scores</h1>
@@ -38,7 +39,7 @@ const ScoreBoard: React.FunctionComponent<ScoreBoardProps> = () => {
         )
       }
       {
-        users.map((e) => <UserScore key={e.key} user={e} />)
+        users.map((e) => <UserScore key={e.key} user={e} /> )
       }
     </div>
   );
