@@ -50,6 +50,12 @@ export const sendCreateRoom = (userName: string) => {
   }
 };
 
+export const sendJoinRoom = (param: any) => {
+  if (socket) {
+    socket.emit('join', { name: param.username, roomID: param.roomID });
+  }
+};
+
 const createSocketClient = (store: Store) => {
   // Connect to the client
   socket = io('http://192.168.1.28:4000');
