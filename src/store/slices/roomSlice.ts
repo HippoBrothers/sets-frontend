@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable no-param-reassign */
-import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSelector, createSlice, DeepPartial, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../store';
 import type Score from '../../types/Score';
+import { storeHydrated } from '../storePersister';
 
 export interface JoinRoomPayload {
   roomID: string;
@@ -50,6 +51,14 @@ const roomSlice = createSlice({
       state.scoreBoard = action.payload;
     },
   },
+  extraReducers: builder => {
+    builder.addCase(storeHydrated, (state, action: PayloadAction<DeepPartial<RootState>>) => {
+      state.roomID = action.payload.room?.roomID;
+      state.playerID = action.payload.room?.playerID;
+      state.secret = action.payload.room?.secret;
+      state.playerName = action.payload.room?.playerName;
+    })
+  }
 });
 
 export const {

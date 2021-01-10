@@ -1,16 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { Router } from 'react-router-dom';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { Router } from "react-router-dom";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 
-import './index.css';
-import { store } from './store/store';
+import { store } from "./store/store";
 
-import createSocketClient from './events/websocket';
+import createSocketClient from "./events/websocket";
+import appHistory from "./history";
+import { persistStore, hydrateStore } from "./store/storePersister";
 
-import appHistory from './history';
+import "./index.css";
+
+persistStore(store);
+hydrateStore(store);
 
 createSocketClient(store);
 
@@ -22,7 +26,7 @@ ReactDOM.render(
       </Router>
     </Provider>
   </React.StrictMode>,
-  document.getElementById('root'),
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

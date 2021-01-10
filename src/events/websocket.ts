@@ -50,9 +50,19 @@ export const sendCreateRoom = (userName: string) => {
   }
 };
 
-export const sendJoinRoom = (param: any) => {
+
+export type JoinRoomParams = {
+  username: string;
+  roomID: string;
+  secret?: string;
+}
+export const sendJoinRoom = (param: JoinRoomParams) => {
   if (socket) {
-    socket.emit('join', { name: param.username, roomID: param.roomID });
+    socket.emit('join', { 
+      name: param.username, 
+      roomID: param.roomID, 
+      secret: param.secret
+    });
   }
 };
 

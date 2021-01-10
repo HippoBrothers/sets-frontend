@@ -1,17 +1,37 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Button, FormControl, Row } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createRoom, joinRoom } from "../../store/roomActions";
 import Logo from "../../components/logo/Logo";
 
 import "./homePage.scss";
+import { useParams } from "react-router-dom";
+import { RootState } from "../../store/store";
 
 type HomePageProps = {};
 
 const HomePage: React.FunctionComponent<HomePageProps> = () => {
   const dispatch = useDispatch();
+
+  const routeParams = useParams<{ roomID?: string }>();
+  const hasRoomInUrl = !!routeParams.roomID
+
+  // Automaticaly join the last rooom
+  const storePlayerName = useSelector(
+    (state: RootState) => state.room.playerName
+  );
+  useEffect(() => {
+    if (hasRoomInUrl && storePlayerName) {
+      dispatch(
+        joinRoom({ username: storePlayerName, roomID: routeParams.roomID })
+      );
+    }
+  }, [dispatch, storePlayerName, hasRoomInUrl, routeParams.roomID]);
+
+  // Maange store of the page
+
   const [username, setUsername] = useState("");
-  const [roomID, setRoomID] = useState("");
+  const [roomID, setRoomID] = useState(routeParams?.roomID || "");
 
   const createRoomCb = useCallback(() => {
     if (username.length > 2) {
@@ -37,13 +57,15 @@ const HomePage: React.FunctionComponent<HomePageProps> = () => {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
-            <FormControl
-              placeholder="Game ID"
-              value={roomID}
-              onChange={(e) => {
-                setRoomID(e.target.value);
-              }}
-            />
+            {!hasRoomInUrl && (
+              <FormControl
+                placeholder="Game ID"
+                value={roomID}
+                onChange={(e) => {
+                  setRoomID(e.target.value);
+                }}
+              />
+            )}
           </div>
           <Button
             onClick={joinRoomCb}
@@ -52,21 +74,24 @@ const HomePage: React.FunctionComponent<HomePageProps> = () => {
             Join Room
           </Button>
         </div>
+        {!hasRoomInUrl && (
+          <>
+            <hr />
 
-        <hr />
-
-        <div className="new-room">
-          <div className="inputs">
-            <FormControl
-              placeholder="Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </div>
-          <Button onClick={createRoomCb} disabled={username.length < 2}>
-            Create Room
-          </Button>
-        </div>
+            <div className="new-room">
+              <div className="inputs">
+                <FormControl
+                  placeholder="Username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+              </div>
+              <Button onClick={createRoomCb} disabled={username.length < 2}>
+                Create Room
+              </Button>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
