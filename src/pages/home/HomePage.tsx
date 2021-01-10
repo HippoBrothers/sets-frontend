@@ -25,10 +25,11 @@ const HomePage: React.FunctionComponent<HomePageProps> = () => {
     }
   }, [dispatch, username, roomID]);
 
+  //   TODO valider en appuyant sur entrer
   return (
     <div className="sets-page sets-page--home">
       <Logo />
-      <div className="join-forms">
+      <div className="main-page-content join-forms">
         <div className="join-room">
           <div className="inputs">
             <FormControl

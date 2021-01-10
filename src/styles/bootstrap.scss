@@ -1,12 +1,23 @@
+@import './colors.scss';
+
 /* The following block can be included in a custom.scss */
 
 /* make the customizations */
 $theme-colors: (
     "primary": red,
-    "secondart": grey,
+    "secondary": grey,
     "info": tomato,
-    "danger": teal
+    "error": red,
+    "warning": orange,
 );
 
 /* import bootstrap to set changes */
 @import "~bootstrap/scss/bootstrap";
+
+
+.btn{
+    border-radius: 0;
+    &:focus {
+        box-shadow: none;
+    }
+}

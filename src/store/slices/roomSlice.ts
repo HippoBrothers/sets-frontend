@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable no-param-reassign */
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../store';
 import type Score from '../../types/Score';
 
@@ -57,5 +57,12 @@ export const {
 } = roomSlice.actions;
 
 export const getRoomBaseState = (state: RootState): RoomSlice => state.room;
+
+export const getCurrentUser =  createSelector(
+  (state: RootState) => state.room.scoreBoard,
+  (state: RootState) => state.room.playerID,
+  (scoreBoard, playerID)=> scoreBoard.find((user) => user.key === playerID),
+)
+
 
 export default roomSlice.reducer;

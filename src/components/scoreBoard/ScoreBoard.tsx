@@ -9,19 +9,14 @@ type ScoreBoardProps = {
 };
 
 const ScoreBoard: React.FunctionComponent<ScoreBoardProps> = () => {
-  const roomID = useSelector((state: RootState) => state.room.roomID);
   const cardsLeftInDeck = useSelector((state: RootState) => state.game.leftInDeck);
   const timeLeft = useSelector((state: RootState) => state.game.buzzingTimeLeft);
   const gameState = useSelector((state: RootState) => state.room.gameState);
   const users = useSelector((state: RootState) => state.room.scoreBoard);
+
   return (
     <div className="score-board">
-      <h1>Scores</h1>
-      <h4>
-        Room ID :
-        {' '}
-        {roomID}
-      </h4>
+      
       { gameState === 'playing' && (
       <h4>
         Cartes restantes :
@@ -38,7 +33,7 @@ const ScoreBoard: React.FunctionComponent<ScoreBoardProps> = () => {
         )
       }
       {
-        users.map((e) => <UserScore key={e.key} user={e} />)
+        users.map((e) => <UserScore key={e.key} user={e} /> )
       }
     </div>
   );

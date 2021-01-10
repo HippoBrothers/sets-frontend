@@ -1,0 +1,19 @@
+@import '../../styles/colors.scss';
+
+.sets-page.sets-page--lobby {
+  background-color: $prune;
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .sets-logo {
+    font-size: 10em;
+  }
+
+  .user-score-container {
+      margin-bottom: 2em;
+  }
+
+}

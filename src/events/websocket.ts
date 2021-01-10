@@ -66,6 +66,7 @@ const createSocketClient = (store: Store) => {
 
     if (data.type === 'waiting') {
       store.dispatch(setGameState(data.type));
+      store.dispatch(updateScoreBoard(data.scoreboard));
     } else if (data.type === 'playing') {
       store.dispatch(setGameState(data.type));
       store.dispatch(updateGame(data as UpdateGamePayload));

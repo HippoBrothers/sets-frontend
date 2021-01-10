@@ -4,11 +4,11 @@ import {RootState} from '../store/store';
 import GamePage from './game/GamePage';
 import LobbyPage from './lobby/LobbyPage';
 import EndPage from './end/EndPage';
+import { Redirect } from 'react-router-dom';
 
 type GameRouterProps = {};
 
 const GameRouter: React.FunctionComponent<GameRouterProps> = () => {
-//    const match = useRouteMatch();
     const gameState = useSelector((state: RootState) => state.room.gameState);
     if (gameState === 'waiting') {
         return <LobbyPage/>;
@@ -19,7 +19,7 @@ const GameRouter: React.FunctionComponent<GameRouterProps> = () => {
     if (gameState === 'end') {
         return <EndPage/>;
     }
-    return <p>WTF</p>;
+    return <Redirect to='/' />;
 };
 
 export default GameRouter;
