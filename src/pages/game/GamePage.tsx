@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { Button } from "react-bootstrap";
+import Clipboard from "clipboard";
 import { useSelector } from "react-redux";
 import Board from "../../components/board/Board";
+import Logo from "../../components/logo/Logo";
 import ScoreBoard from "../../components/scoreBoard/ScoreBoard";
 import type { RootState } from "../../store/store";
 import Buttons from "./Buttons";
@@ -12,10 +15,22 @@ type GamePageProps = {};
 const GamePage: React.FunctionComponent<GamePageProps> = () => {
   const roomID = useSelector((state: RootState) => state.room.roomID);
 
+
+  useEffect(() => {
+    new Clipboard(".room-id");
+  }, []);
+
   return (
     <div className="sets-page sets-page--game">
       <div className="side-bar">
-        <h4>Room ID : {roomID}</h4>
+        <Logo />
+        <Button
+          variant="dark"
+          className="room-id"
+          data-clipboard-text={window.location.href}
+        >
+          {roomID}
+        </Button>
         <ScoreBoard />
 
         {/* TODO à déplacer dans un nouveau composant
