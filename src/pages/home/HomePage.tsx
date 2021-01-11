@@ -14,7 +14,7 @@ const HomePage: React.FunctionComponent<HomePageProps> = () => {
   const dispatch = useDispatch();
 
   const routeParams = useParams<{ roomID?: string }>();
-  const hasRoomInUrl = !!routeParams.roomID
+  const hasRoomInUrl = !!routeParams.roomID;
 
   // Automaticaly join the last rooom
   const storePlayerName = useSelector(
@@ -74,24 +74,20 @@ const HomePage: React.FunctionComponent<HomePageProps> = () => {
             Join Room
           </Button>
         </div>
-        {!hasRoomInUrl && (
-          <>
-            <hr />
+        <hr />
 
-            <div className="new-room">
-              <div className="inputs">
-                <FormControl
-                  placeholder="Username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                />
-              </div>
-              <Button onClick={createRoomCb} disabled={username.length < 2}>
-                Create Room
-              </Button>
-            </div>
-          </>
-        )}
+        <div className="new-room">
+          <div className="inputs">
+            <FormControl
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
+          <Button onClick={createRoomCb} disabled={username.length < 2}>
+            Create Room
+          </Button>
+        </div>
       </div>
     </div>
   );
