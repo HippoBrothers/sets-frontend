@@ -27,3 +27,5 @@ jobs:
 
       - name: Deploy react app to github pages
         uses: tanwanimohit/deploy-react-to-ghpages@v1.0.1
+        env:
+          BACKEND_URL: https://sets3630.herokuapp.com/

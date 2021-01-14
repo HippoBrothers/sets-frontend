@@ -70,7 +70,7 @@ export const sendJoinRoom = (param: JoinRoomParams) => {
 
 const createSocketClient = (store: Store) => {
   // Connect to the client
-  socket = io(process.env.BACKEND_URL || 'localhost:3000');
+  socket = io(process.env.BACKEND_URL || 'localhost:4000');
   // Créer une room
   socket.on('stateChanged', (data: any) => {
     const currentState = (store.getState() as RootState).room.gameState;
