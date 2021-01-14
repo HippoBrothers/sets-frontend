@@ -17,7 +17,9 @@
   width: $size * 1.54;
   height: $size;
 
-  // transform: rotate(90deg);
+  &:focus {
+    outline: none;
+  }
 }
 
 .sets-card.card-selected {

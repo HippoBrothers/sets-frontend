@@ -5,7 +5,7 @@ import { createRoom, joinRoom } from "../../store/roomActions";
 import Logo from "../../components/logo/Logo";
 
 import "./homePage.scss";
-import { Link, useParams, useRouteMatch } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 import { RootState } from "../../store/store";
 
 type HomePageProps = {};
