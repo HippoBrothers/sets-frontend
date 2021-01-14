@@ -55,20 +55,22 @@ export type JoinRoomParams = {
   username: string;
   roomID: string;
   secret?: string;
+  userID?: string;
 }
 export const sendJoinRoom = (param: JoinRoomParams) => {
   if (socket) {
     socket.emit('join', { 
       name: param.username, 
       roomID: param.roomID, 
-      secret: param.secret
+      secret: param.secret,
+      userID: param.userID,
     });
   }
 };
 
 const createSocketClient = (store: Store) => {
   // Connect to the client
-  socket = io('http://192.168.1.28:4000');
+  socket = io(process.env.BACKEND_URL || 'localhost:3000');
   // Créer une room
   socket.on('stateChanged', (data: any) => {
     const currentState = (store.getState() as RootState).room.gameState;
