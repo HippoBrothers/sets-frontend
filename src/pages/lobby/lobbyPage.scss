@@ -1,4 +1,4 @@
-@import '../../styles/colors.scss';
+@import "../../styles/colors.scss";
 
 .sets-page.sets-page--lobby {
   background-color: $prune;
@@ -12,8 +12,16 @@
     font-size: 10em;
   }
 
-  .user-score-container {
-      margin-bottom: 2em;
+  .score-board{
+    width: 100%;
   }
 
+  .users-list {
+    .user-score-container {
+      margin-bottom: 2em;
+    }
+    .user-score-container:last-child {
+      border: none;
+    }
+  }
 }

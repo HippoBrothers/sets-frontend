@@ -20,14 +20,9 @@ export const validateCards = createAsyncThunk('validateCards', (param, thunkAPI)
 });
 
 export const selectCard = createAsyncThunk<void, number>('selectCard', (param, thunkAPI) => {
-  const { selectedCards } = getGameBaseState(thunkAPI.getState() as RootState);
   const { gameState } = getRoomBaseState(thunkAPI.getState() as RootState);
-  const newSelectedCards = [...selectedCards, param]
   if (gameState === 'buzzed') {
-    sendCardSelected(newSelectedCards);
-  }
-  if(newSelectedCards.length === 3){
-    sendValidation(newSelectedCards);
+    sendCardSelected(param);
   }
 });
 

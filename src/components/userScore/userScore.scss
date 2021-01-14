@@ -1,42 +1,36 @@
+.user-score-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 
-.buzzed {
+  padding: 0.5em 1em;
 
-}
+  &:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+  }
 
-.voted {
+  .user-image {
+    height: 2em;
+    width: 2em;
+    border-radius: 50%;
+    text-align: center;
 
-}
-
-.user-score-container{
+    background-color: rgba(0,0,0,0.2);
+    border: solid 2px orange;
     display: flex;
-    flex-direction: row;
     align-items: center;
+    justify-content: center;
+  }
+  .user-username {
+    flex: 1;
+    margin: 0 1em;
+  }
+  .user-score {
+    font-size: 1.5em;
+    margin: 0;
+  }
 
-    padding: 0.1em 0.5em;
-
-    .user-image{
-        height: 2em;
-        width: 2em;
-        border-radius: 50%;
-        background-color: red;
-        border: solid 2px black;
-        text-align: center;
-    }
-    .user-username{
-        flex: 1;
-        margin: 0 1em;
-    }
-    .user-score{
-        font-size: 1.5em;
-        margin: 0;
-    }
-
-    .has-voted{
-        margin: 0 0.75em;
-    }
-
-
+  .badge {
+    margin: 0 0.75em;
+  }
 }
-
-
-

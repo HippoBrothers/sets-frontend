@@ -18,7 +18,6 @@ const LobbyPage: React.FunctionComponent<LobbyPageProps> = () => {
     <div className="sets-page sets-page--lobby">
       <Logo />
       <div className="main-page-content">
-        <h3>Joueurs</h3>
         <ScoreBoard />
         <Button
           size="lg"

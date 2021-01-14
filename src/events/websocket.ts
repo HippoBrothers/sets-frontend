@@ -37,9 +37,9 @@ export const sendValidation = (cards: Array<number>) => {
   }
 };
 
-export const sendCardSelected = (cards: Array<number>) => {
+export const sendCardSelected = (card: number) => {
   if (socket) {
-    socket.emit('select', cards);
+    socket.emit('select', card);
   }
 };
 

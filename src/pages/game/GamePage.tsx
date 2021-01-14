@@ -7,6 +7,7 @@ import Logo from "../../components/logo/Logo";
 import ScoreBoard from "../../components/scoreBoard/ScoreBoard";
 import type { RootState } from "../../store/store";
 import Buttons from "./Buttons";
+import CardsLeft from "../../components/cardsLeft/CardsLeft";
 
 import "./GamePage.scss";
 
@@ -14,7 +15,11 @@ type GamePageProps = {};
 
 const GamePage: React.FunctionComponent<GamePageProps> = () => {
   const roomID = useSelector((state: RootState) => state.room.roomID);
+  const gameState = useSelector((state: RootState) => state.room.gameState);
 
+  const timeLeft = useSelector(
+    (state: RootState) => state.game.buzzingTimeLeft
+  );
 
   useEffect(() => {
     new Clipboard(".room-id");
@@ -24,14 +29,25 @@ const GamePage: React.FunctionComponent<GamePageProps> = () => {
     <div className="sets-page sets-page--game">
       <div className="side-bar">
         <Logo />
-        <Button
-          variant="dark"
-          className="room-id"
-          data-clipboard-text={window.location.href}
-        >
-          {roomID}
-        </Button>
+        <div className="row-infos">
+          <Button
+            variant="dark"
+            className="room-id"
+            data-clipboard-text={window.location.href}
+          >
+            Room : {roomID}
+          </Button>
+        </div>
+
+       
+        {gameState === "buzzed" && (
+          <h4>Reste : {timeLeft ? timeLeft / 1000 : "Je sais pas"}</h4>
+        )}
         <ScoreBoard />
+
+        <div className="dark-bg">
+          <CardsLeft />
+        </div>
 
         {/* TODO à déplacer dans un nouveau composant
                 Ne pas oublier de bouger le style */}

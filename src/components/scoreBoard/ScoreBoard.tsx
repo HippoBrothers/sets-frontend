@@ -1,30 +1,23 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store/store';
-import UserScore from '../userScore/UserScore';
-import './scoreBoard.scss';
+import React from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
+import UserScore from "../userScore/UserScore";
+import "./scoreBoard.scss";
 
-type ScoreBoardProps = {
-
-};
+type ScoreBoardProps = {};
 
 const ScoreBoard: React.FunctionComponent<ScoreBoardProps> = () => {
-  const cardsLeftInDeck = useSelector((state: RootState) => state.game.leftInDeck);
-  const timeLeft = useSelector((state: RootState) => state.game.buzzingTimeLeft);
-  const gameState = useSelector((state: RootState) => state.room.gameState);
   const users = useSelector((state: RootState) => state.room.scoreBoard);
+  const sortedUsers = users.slice().sort((a, b) => a.score - b.score);
 
   return (
     <div className="score-board">
-      {gameState === "playing" && (
-        <div className="cards-left">{cardsLeftInDeck}</div>
-      )}
-      {gameState === "buzzed" && (
-        <h4>Reste : {timeLeft ? timeLeft / 1000 : "Je sais pas"}</h4>
-      )}
-      {users.map((e) => (
-        <UserScore key={e.key} user={e} />
-      ))}
+      <h4>Players</h4>
+      <div className="users-list">
+        {sortedUsers.map((e) => (
+          <UserScore key={e.key} user={e} />
+        ))}
+      </div>
     </div>
   );
 };
