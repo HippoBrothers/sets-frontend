@@ -85,13 +85,11 @@ const Card: React.FunctionComponent<CardProps> = ({
 
     return (
       <button
-        className={`sets-card ${
-          isSelected ? "card-selected" : ""
-        }`}
+        className={`sets-card ${isSelected ? "card-selected" : ""}`}
         type="button"
         onClick={clickHandler}
       >
-        <svg height={500}>
+        {/* <svg height={200}>
           <defs>
             {colors[0]}
             <pattern
@@ -144,7 +142,7 @@ const Card: React.FunctionComponent<CardProps> = ({
             />
           </defs>
           {symbols}
-        </svg>
+        </svg> */}
       </button>
     );
 };

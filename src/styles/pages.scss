@@ -12,6 +12,8 @@
         flex-direction: column;
     
         align-items: center;
+
+        padding: 2em 1em;
     
         @include media-breakpoint-up(md) {
             padding: 2em;

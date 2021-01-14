@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import Clipboard from "clipboard";
 import { useSelector } from "react-redux";
@@ -25,9 +25,16 @@ const GamePage: React.FunctionComponent<GamePageProps> = () => {
     new Clipboard(".room-id");
   }, []);
 
+  const [menuOpen, setmenuOpen] = useState(false);
+
   return (
     <div className="sets-page sets-page--game">
-      <div className="side-bar">
+      <div className="side-bar-toogle">
+        <button type="button" onClick={() => setmenuOpen(!menuOpen)}>
+          {menuOpen ? 'CLOSE' : <Logo/>}
+        </button>
+      </div>
+      <div className={`side-bar ${menuOpen ? 'open' : ''}`}>
         <Logo />
         <div className="row-infos">
           <Button
@@ -39,7 +46,6 @@ const GamePage: React.FunctionComponent<GamePageProps> = () => {
           </Button>
         </div>
 
-       
         {gameState === "buzzed" && (
           <h4>Reste : {timeLeft ? timeLeft / 1000 : "Je sais pas"}</h4>
         )}
