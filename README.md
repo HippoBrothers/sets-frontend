@@ -1,3 +1,6 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/cb0da80c-8fee-4426-b8cb-a8846b7b4cbe/deploy-status)](https://app.netlify.com/sites/ecstatic-hamilton-a98306/deploys)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
