@@ -16,25 +16,15 @@ const ScoreBoard: React.FunctionComponent<ScoreBoardProps> = () => {
 
   return (
     <div className="score-board">
-      
-      { gameState === 'playing' && (
-      <h4>
-        Cartes restantes :
-          {cardsLeftInDeck}
-      </h4>
+      {gameState === "playing" && (
+        <div className="cards-left">{cardsLeftInDeck}</div>
       )}
-      {
-        gameState === 'buzzed' && (
-        <h4>
-          Reste :
-          {' '}
-          {timeLeft ? timeLeft / 1000 : 'Je sais pas'}
-        </h4>
-        )
-      }
-      {
-        users.map((e) => <UserScore key={e.key} user={e} /> )
-      }
+      {gameState === "buzzed" && (
+        <h4>Reste : {timeLeft ? timeLeft / 1000 : "Je sais pas"}</h4>
+      )}
+      {users.map((e) => (
+        <UserScore key={e.key} user={e} />
+      ))}
     </div>
   );
 };

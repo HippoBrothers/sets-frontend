@@ -7,6 +7,7 @@ import type SetsCard from '../../types/SetsCard';
 export interface UpdateGamePayload {
   board: Array<SetsCard>;
   cardsLeft: number;
+  selectedCards: Array<number>;
 }
 
 interface GameSlice {
@@ -30,10 +31,10 @@ const gameSlice = createSlice({
     updateGame(state: GameSlice, action: PayloadAction<UpdateGamePayload>) {
       state.cardsOnBoard = action.payload.board;
       state.leftInDeck = action.payload.cardsLeft;
-    },
-    selectCard(state: GameSlice, action: PayloadAction<number>) {
-      if (state.selectedCards.length < 3) {
-        state.selectedCards.push(action.payload);
+      if(action.payload.selectedCards) {
+        state.selectedCards = action.payload.selectedCards;
+      } else if (state.selectedCards) {
+        state.selectedCards = []
       }
     },
     endSelection(state: GameSlice) {
@@ -57,7 +58,7 @@ const gameSlice = createSlice({
 });
 
 export const {
-  updateGame, endSelection, selectCard, clearBoard, playerBuzz,
+  updateGame, endSelection, clearBoard, playerBuzz,
 } = gameSlice.actions;
 
 export const getGameBaseState = (state: RootState): GameSlice => state.game;

@@ -27,6 +27,11 @@ const UserScore: React.FunctionComponent<UserScoreProps> = ({ user }) => {
         </Badge>
       )}
       <span className="user-username">{user.name}</span>
+      {user.meta.vote && (
+        <Badge variant="info" pill className="has-voted">
+          DEAL
+        </Badge>
+      )}
       <span className="user-score">{user.score}</span>
     </div>
   );

@@ -37,6 +37,12 @@ export const sendValidation = (cards: Array<number>) => {
   }
 };
 
+export const sendCardSelected = (cards: Array<number>) => {
+  if (socket) {
+    socket.emit('select', cards);
+  }
+};
+
 export const sendVoteAddCards = () => {
   if (socket) {
     console.log('Ask for more cards');
@@ -70,7 +76,8 @@ export const sendJoinRoom = (param: JoinRoomParams) => {
 
 const createSocketClient = (store: Store) => {
   // Connect to the client
-  socket = io(process.env.BACKEND_URL || 'localhost:4000');
+  console.log(process.env)
+  socket = io(process.env.REACT_APP_BACKEND_URL || 'localhost:4000');
   // Créer une room
   socket.on('stateChanged', (data: any) => {
     const currentState = (store.getState() as RootState).room.gameState;
@@ -89,7 +96,7 @@ const createSocketClient = (store: Store) => {
       }
     } else if (data.type === 'buzzed') {
       store.dispatch(setGameState(data.type));
-
+      store.dispatch(updateGame(data as UpdateGamePayload));
       store.dispatch(playerBuzz(data.payload));
     } else if (data.type === 'end') {
       store.dispatch(clearBoard());

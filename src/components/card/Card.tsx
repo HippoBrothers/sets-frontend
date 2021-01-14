@@ -1,8 +1,8 @@
 /* eslint-disable */
 
-import React, {ReactElement, useCallback} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {selectCard} from '../../store/slices/gameSlice';
+import React, { useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectCard } from "../../store/gameActions";
 import {RootState} from '../../store/store';
 
 import './card.scss';
@@ -84,23 +84,51 @@ const Card: React.FunctionComponent<CardProps> = ({
     });
 
     return (
-        <button className={`sets-card ${isSelected ? 'card-selected' : ''}`} type="button" onClick={clickHandler}>
-            <svg height={500}>
-                <defs>
-                    {colors[0]}
-                    <pattern id="stripe1" className="stripe" patternUnits="userSpaceOnUse" width="20" height="20">
-                        <line x1="0" y1="0" x2="20" y2="20"/>
-                    </pattern>
-                    <pattern id="stripe2" className="stripe" patternUnits="userSpaceOnUse" x="6" y="6" width="20"
-                             height="20">
-                        <line x1="0" y1="0" x2="20" y2="20"/>
-                    </pattern>
-                    <mask id="mask">
-                        <rect height="500" width="500" style={{fill: "url(#stripe1)"}}/>
-                        <rect height="500" width="500" style={{fill: "url(#stripe2)"}}/>
-                    </mask>
-                    <style dangerouslySetInnerHTML={{
-                        __html: `
+      <button
+        className={`sets-card ${
+          isSelected ? "card-selected" : ""
+        }`}
+        type="button"
+        onClick={clickHandler}
+      >
+        <svg height={500}>
+          <defs>
+            {colors[0]}
+            <pattern
+              id="stripe1"
+              className="stripe"
+              patternUnits="userSpaceOnUse"
+              width="20"
+              height="20"
+            >
+              <line x1="0" y1="0" x2="20" y2="20" />
+            </pattern>
+            <pattern
+              id="stripe2"
+              className="stripe"
+              patternUnits="userSpaceOnUse"
+              x="6"
+              y="6"
+              width="20"
+              height="20"
+            >
+              <line x1="0" y1="0" x2="20" y2="20" />
+            </pattern>
+            <mask id="mask">
+              <rect
+                height="500"
+                width="500"
+                style={{ fill: "url(#stripe1)" }}
+              />
+              <rect
+                height="500"
+                width="500"
+                style={{ fill: "url(#stripe2)" }}
+              />
+            </mask>
+            <style
+              dangerouslySetInnerHTML={{
+                __html: `
       .stripe line {
             fill: white;
             stroke: white;
@@ -111,13 +139,13 @@ const Card: React.FunctionComponent<CardProps> = ({
             .diamond {
                 rotate: 90deg;
             }
-    `
-                    }}/>
-                </defs>
-                {symbols}
-            </svg>
-
-        </button>
+    `,
+              }}
+            />
+          </defs>
+          {symbols}
+        </svg>
+      </button>
     );
 };
 
