@@ -76,7 +76,6 @@ export const sendJoinRoom = (param: JoinRoomParams) => {
 
 const createSocketClient = (store: Store) => {
   // Connect to the client
-  console.log(process.env)
   socket = io(process.env.REACT_APP_BACKEND_URL || 'localhost:4000');
   // Créer une room
   socket.on('stateChanged', (data: any) => {
