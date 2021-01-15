@@ -3,21 +3,21 @@
 import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCard } from "../../store/gameActions";
-import {RootState} from '../../store/store';
+import { RootState } from "../../store/store";
 
-import './card.scss';
+import "./card.scss";
 
 type CardProps = {
-    color: number,
-    number: number,
-    shape: number,
-    fill: number,
-    id: number;
+  color: number;
+  number: number;
+  shape: number;
+  fill: number;
+  id: number;
 };
 
 type fillProps = {
-    gClass: string | undefined,
-    insideProps: any,
+  gClass: string | undefined;
+  insideProps: any;
 };
 
 const shapes = [
@@ -37,101 +37,109 @@ const shapes = [
     stroke="null"
   />,
 ];
-const generateShape = (shape: any, fillProps: fillProps, color: string, offset: number, key: number) => {
-    if (fillProps.insideProps.fill !== "none") {
-        fillProps.insideProps.fill = color;
-    }
-    return (
-      <g key={key} transform={`translate(0, ${offset})`}>
-        <g className={fillProps.gClass}>
-          {React.cloneElement(shape, {
-            className: "inside",
-            style: { ...fillProps.insideProps },
-          })}
-        </g>
-        <g>
-          {React.cloneElement(shape, {
-            className: "outside",
-            style: { stroke: color, fill: "none", strokeWidth: 3 },
-          })}
-        </g>
+const generateShape = (
+  shape: any,
+  fillProps: fillProps,
+  color: string,
+  offset: number,
+  key: number
+) => {
+  if (fillProps.insideProps.fill !== "none") {
+    fillProps.insideProps.fill = color;
+  }
+  return (
+    <g key={key} transform={`translate(0, ${offset})`}>
+      <g className={fillProps.gClass}>
+        {React.cloneElement(shape, {
+          className: "inside",
+          style: { ...fillProps.insideProps },
+        })}
       </g>
-    );
+      <g>
+        {React.cloneElement(shape, {
+          className: "outside",
+          style: { stroke: color, fill: "none", strokeWidth: 3 },
+        })}
+      </g>
+    </g>
+  );
 };
 
 const colors = [
-    "#07bf07",
-    "#ea0007",
-    "#3333ff"
+  // Green
+  "#5ebb5e",
+  // Red
+  "#f72b30",
+  // Blue
+  "#3333ff",
 ];
 
 const verticalOffset = [[75], [41, 107], [20, 75, 130]];
 
 const filled: fillProps[] = [
-    {gClass: undefined, insideProps: {fill: "none"}},
-    {gClass: "striped", insideProps: {}},
-    {gClass: undefined, insideProps: {opacity: 1}}
+  { gClass: undefined, insideProps: { fill: "none" } },
+  { gClass: "striped", insideProps: {} },
+  { gClass: undefined, insideProps: { opacity: 1 } },
 ];
 
 const Card: React.FunctionComponent<CardProps> = ({
-                                                      color, number, shape, fill, id,
-                                                  }) => {
-    const dispatch = useDispatch();
-    const gameMode = useSelector((state: RootState) => state.room.gameState);
-    const isSelected = useSelector((state: RootState) => state.game.selectedCards.includes(id));
-    const clickHandler = useCallback(
-        () => {
-            if (gameMode === 'buzzed') {
-                dispatch(selectCard(id));
-            }
-        },
-        [dispatch, gameMode],
-    );
+  color,
+  number,
+  shape,
+  fill,
+  id,
+}) => {
+  const dispatch = useDispatch();
+  const gameMode = useSelector((state: RootState) => state.room.gameState);
+  const isSelected = useSelector((state: RootState) =>
+    state.game.selectedCards.includes(id)
+  );
+  const clickHandler = useCallback(() => {
+    if (gameMode === "buzzed") {
+      dispatch(selectCard(id));
+    }
+  }, [dispatch, gameMode]);
 
-    const symbols = verticalOffset[number - 1].map((it, index) => {
-      return generateShape(
-        shapes[shape - 1],
-        filled[fill - 1],
-        colors[color - 1],
-        it,
-        index
-      );
-    });
-
-    return (
-      <button
-        className={`sets-card ${isSelected ? "card-selected" : ""}`}
-        type="button"
-        onClick={clickHandler}
-      >
-        <svg preserveAspectRatio="xMidYMid meet" viewBox="0 0 130 200">
-          <defs>
-            {colors[0]}
-            <pattern
-              id="stripe1"
-              className="stripe"
-              patternUnits="userSpaceOnUse"
-              width="8"
-              height="8"
-            >
-              {/* Main pattern diagonal */}
-              <line x1="0" y1="0" x2="8" y2="8" style={{strokeWidth: 1.5}} />
-              {/* Filling the corners with small lines to complete the pattern */}
-              <line x1="7" y1="-1" x2="9" y2="1" style={{strokeWidth: 1.5}} />
-              <line x1="-1" y1="7" x2="1" y2="9" style={{strokeWidth: 1.5}} />
-            </pattern>
-            <mask id="mask">
-              <rect
-                height="50"
-                width="130"
-                style={{ fill: "url(#stripe1)" }}
-              />
-            </mask>
-          </defs>
-          {symbols}
-        </svg>
-      </button>
+  const symbols = verticalOffset[number - 1].map((it, index) => {
+    return generateShape(
+      shapes[shape - 1],
+      filled[fill - 1],
+      colors[color - 1],
+      it,
+      index
     );
+  });
+
+  return (
+    <button
+      className={`sets-card ${isSelected ? "card-selected" : ""}`}
+      type="button"
+      onClick={clickHandler}
+    >
+      <svg preserveAspectRatio="xMidYMid meet" viewBox="0 0 130 200">
+        <defs>
+          {colors[0]}
+          <pattern
+            id="stripe1"
+            className="stripe"
+            patternUnits="userSpaceOnUse"
+            width="8"
+            height="8"
+          >
+            {/* Main pattern diagonal */}
+            <line x1="0" y1="0" x2="8" y2="8" style={{ strokeWidth: 1.5 }} />
+            {/* Filling the corners with small lines to complete the pattern */}
+            <line x1="7" y1="-1" x2="9" y2="1" style={{ strokeWidth: 1.5 }} />
+            <line x1="-1" y1="7" x2="1" y2="9" style={{ strokeWidth: 1.5 }} />
+          </pattern>
+          <mask id="mask">
+            <rect height="50" width="130" style={{ fill: "url(#stripe1)" }} />
+          </mask>
+        </defs>
+        {symbols}
+      </svg>
+    </button>
+  );
 };
 
 export default Card;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { startVote } from "../../../store/roomActions";
@@ -20,6 +20,31 @@ const Buttons: React.FunctionComponent<ButtonsProps> = () => {
   const buzzingPlayer = useSelector(
     (state: RootState) => state.game.buzzingPlayer
   );
+
+  useEffect(() => {
+    const keyHandler = (e: KeyboardEvent) => {
+      if (gameState === "playing" && e.code === "Space") {
+        // Preventing scroll when pressing Space
+        e.preventDefault();
+        dispatch(buzz());
+      }
+      if (gameState === "playing" && e.code === "KeyD") {
+        dispatch(voteAddCards());
+      }
+      if (
+        gameState === "buzzed" &&
+        currentPlayer === buzzingPlayer &&
+        e.code === "Escape"
+      ) {
+        dispatch(validateCards());
+      }
+    };
+    document.addEventListener("keydown", keyHandler);
+    return () => {
+      document.removeEventListener("keydown", keyHandler);
+    };
+  }, [dispatch, gameState, buzzingPlayer, currentPlayer]);
+
   return (
     <>
       {(gameState === "waiting" || gameState === "end") && (
