@@ -10,7 +10,6 @@ const CardsLeft: React.FunctionComponent<CardsLeftProps> = () => {
   const cardsLeftInDeck = useSelector(
     (state: RootState) => state.game.leftInDeck
   );
-
   return (
     <div className="cards-left">
       <span className="cards-left-icon">{cardsLeftInDeck}</span>

@@ -21,47 +21,56 @@ type fillProps = {
 };
 
 const shapes = [
-    <path xmlns="http://www.w3.org/2000/svg" transform="rotate(90, 20.7675, 55.2575) translate(10,-5)" id="svg_17" d="m-30.7325,41.25031c34.33334,-15.56355 68.66668,15.56355 103.00001,0l0,28.01439c-34.33334,15.56356 -68.66667,-15.56355 -103.00001,0l0,-28.01439z"/>,
-    <path xmlns="http://www.w3.org/2000/svg" transform="rotate(90, 27.8375, 63.0763) translate(5,10)" id="svg_15" d="m-10.8748,29.51314l63.75463,0l0,0c8.35204,0 15.12269,8.56132 15.12269,19.12224c0,10.56091 -6.77065,19.12223 -15.12269,19.12223l-63.75463,0l0,0c-8.35203,0 -15.12269,-8.56132 -15.12269,-19.12223c0,-10.56092 6.77066,-19.12224 15.12269,-19.12224z"/>,
-    <path xmlns="http://www.w3.org/2000/svg" id="svg_13"
-          transform="translate(5,0)"
-          d="m0.74211,65.98939c6.21971,-23.49782 17.43352,-43.55322 26.97338,-63.45685c11.09759,12.77289 20.68529,40.87301 29.02666,60.44415c-7.43994,22.63749 -18.14958,43.25405 -27.79755,63.55587c-10.40069,-18.57427 -19.29498,-39.79574 -28.20248,-60.54317l0,0z"/>
+  <path
+    d="m10.07253,36.94435c5.0833,6.79162 18.81158,3.95477 26.87427,1.63653c8.06269,-2.31824 19.80232,-3.3107 33.09916,2.25552c13.29684,5.56622 28.85922,1.69124 38.19246,-4.89203c9.33324,-6.58327 16.72826,-21.21169 10.54108,-27.27992c-6.18719,-6.06823 -20.83266,4.94676 -31.95758,5.69676c-11.12493,0.74999 -19.0831,-0.89772 -31.3644,-5.13913c-12.2813,-4.24141 -17.89599,-3.23285 -27.59398,0.94235c-9.69799,4.1752 -22.87431,19.9883 -17.79101,26.77992z"
+    id="wave"
+    stroke="null"
+  />,
+  <path
+    d="m65.84932,44.98819c-20.36825,-4.72837 -37.66279,-12.97566 -54.85061,-20.02721c11.29181,-7.75573 35.90819,-14.2438 53.07827,-19.94917c19.6005,5.58793 37.39137,13.48263 54.92432,20.61624c-16.33328,7.18648 -34.94893,13.26565 -53.15197,19.36013l0,0l0,0.00001l-0.00001,0z"
+    id="diamond"
+    stroke="null"
+  />,
+  <path
+    d="m29.05324,5.91843l71.89351,0l0,0c9.41825,0 17.05324,8.54311 17.05324,19.08157c0,10.53845 -7.63499,19.08156 -17.05324,19.08156l-71.89351,0l0,0c-9.41824,0 -17.05324,-8.54311 -17.05324,-19.08156c0,-10.53846 7.635,-19.08157 17.05324,-19.08157z"
+    id="circle"
+    stroke="null"
+  />,
 ];
 const generateShape = (shape: any, fillProps: fillProps, color: string, offset: number, key: number) => {
     if (fillProps.insideProps.fill !== "none") {
         fillProps.insideProps.fill = color;
     }
     return (
-        <g key={key} transform={`translate(${offset},0)`}>
-            <g className={fillProps.gClass}>
-                {React.cloneElement(shape, {className: "inside", style: {...fillProps.insideProps}})}
-            </g>
-            <g x={-1} y={-1}>
-                {React.cloneElement(shape, {
-                    className: "outside",
-                    style: {stroke: color, fill: "none", strokeWidth: 3}
-                })}
-            </g>
+      <g key={key} transform={`translate(0, ${offset})`}>
+        <g className={fillProps.gClass}>
+          {React.cloneElement(shape, {
+            className: "inside",
+            style: { ...fillProps.insideProps },
+          })}
         </g>
-    )
+        <g>
+          {React.cloneElement(shape, {
+            className: "outside",
+            style: { stroke: color, fill: "none", strokeWidth: 3 },
+          })}
+        </g>
+      </g>
+    );
 };
 
 const colors = [
-    "green",
-    "red",
-    "blue"
+    "#07bf07",
+    "#ea0007",
+    "#3333ff"
 ];
 
-const numbers = [
-    [120],
-    [80,160],
-    [50,120,190],
-];
+const verticalOffset = [[75], [41, 107], [20, 75, 130]];
 
 const filled: fillProps[] = [
     {gClass: undefined, insideProps: {fill: "none"}},
     {gClass: "striped", insideProps: {}},
-    {gClass: undefined, insideProps: {}}
+    {gClass: undefined, insideProps: {opacity: 1}}
 ];
 
 const Card: React.FunctionComponent<CardProps> = ({
@@ -79,8 +88,14 @@ const Card: React.FunctionComponent<CardProps> = ({
         [dispatch, gameMode],
     );
 
-    const symbols = numbers[number-1].map((it, index) => {
-      return generateShape(shapes[shape - 1], filled[fill - 1], colors[color - 1], it, index);
+    const symbols = verticalOffset[number - 1].map((it, index) => {
+      return generateShape(
+        shapes[shape - 1],
+        filled[fill - 1],
+        colors[color - 1],
+        it,
+        index
+      );
     });
 
     return (
@@ -89,60 +104,32 @@ const Card: React.FunctionComponent<CardProps> = ({
         type="button"
         onClick={clickHandler}
       >
-        {/* <svg height={200}>
+        <svg preserveAspectRatio="xMidYMid meet" viewBox="0 0 130 200">
           <defs>
             {colors[0]}
             <pattern
               id="stripe1"
               className="stripe"
               patternUnits="userSpaceOnUse"
-              width="20"
-              height="20"
+              width="8"
+              height="8"
             >
-              <line x1="0" y1="0" x2="20" y2="20" />
-            </pattern>
-            <pattern
-              id="stripe2"
-              className="stripe"
-              patternUnits="userSpaceOnUse"
-              x="6"
-              y="6"
-              width="20"
-              height="20"
-            >
-              <line x1="0" y1="0" x2="20" y2="20" />
+              {/* Main pattern diagonal */}
+              <line x1="0" y1="0" x2="8" y2="8" style={{strokeWidth: 1.5}} />
+              {/* Filling the corners with small lines to complete the pattern */}
+              <line x1="7" y1="-1" x2="9" y2="1" style={{strokeWidth: 1.5}} />
+              <line x1="-1" y1="7" x2="1" y2="9" style={{strokeWidth: 1.5}} />
             </pattern>
             <mask id="mask">
               <rect
-                height="500"
-                width="500"
+                height="50"
+                width="130"
                 style={{ fill: "url(#stripe1)" }}
               />
-              <rect
-                height="500"
-                width="500"
-                style={{ fill: "url(#stripe2)" }}
-              />
             </mask>
-            <style
-              dangerouslySetInnerHTML={{
-                __html: `
-      .stripe line {
-            fill: white;
-            stroke: white;
-        }
-            .striped {
-            mask: url(#mask);
-        }
-            .diamond {
-                rotate: 90deg;
-            }
-    `,
-              }}
-            />
           </defs>
           {symbols}
-        </svg> */}
+        </svg>
       </button>
     );
 };

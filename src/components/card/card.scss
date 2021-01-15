@@ -4,10 +4,10 @@
   align-items: center;
   justify-content: center;
 
-  padding: 1.2em;
+  padding: 0.2em;
 
   border-radius: 1em;
-  background-color: #eaeaea;
+  background-color: #efefef;
   border: solid 5px white;
 
   box-shadow: 0px 0px 5px rgba(200, 200, 200, 0.2),
@@ -17,28 +17,35 @@
   height: $size * 1.54;
   width: $size;
 
+  @media (max-width: 1200px) {
+    $size: 10em;
+    height: $size * 1.54;
+    width: $size;
+  }
+
+  @media (max-width: 1050px) {
+    $size: 8.5em;
+    height: $size * 1.54;
+    width: $size;
+  }
+
   @media (max-width: 950px) {
     $size: 8em;
     height: $size * 1.54;
     width: $size;
   }
 
-
   @media (max-width: 750px) {
     $size: 7em;
     height: $size * 1.54;
     width: $size;
   }
-  
 
   @media (max-width: 600px) {
     $size: 6em;
     height: $size * 1.54;
     width: $size;
   }
-
-  
-
   @media (max-width: 500px) {
     $size: 5em;
     height: $size * 1.54;
@@ -48,8 +55,21 @@
   &:focus {
     outline: none;
   }
+
+  svg {
+    width: 100%;
+
+    .stripe line {
+      fill: white;
+      stroke: white;
+    }
+    .striped {
+      mask: url(#mask);
+    }
+  }
 }
 
 .sets-card.card-selected {
-  border-color: blue;
+  border-color: orange;
+  background-color: rgb(240, 240, 240);
 }

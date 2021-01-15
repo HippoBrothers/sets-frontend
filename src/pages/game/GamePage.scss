@@ -4,6 +4,14 @@
 
   background-color: #2b2a27;
 
+  &.game-ask-deal{
+    background-color: #633f09;
+  }
+
+  &.game-state--buzzed{
+    background-color: #742020;
+  }
+
   position: relative;
 
   .side-bar-toogle {
@@ -19,8 +27,6 @@
       &:focus{
         outline: none;
       }
-
-      
     }
 
     @media (max-width: 950px) {
@@ -30,76 +36,6 @@
 
   @media (max-width: 950px) {
     flex-direction: column;
-  }
-
-  .side-bar {
-    @media (max-width: 950px) {
-      display: none;
-      &.open {
-        position: absolute;
-        display: flex;
-        height: calc(100% - 4em);
-        width: 100%;
-        top: 4em;
-      }
-    }
-
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    overflow: auto;
-
-    width: 20em;
-
-    background-color: #581845;
-    box-shadow: 3px 0px 10px rgba(0, 0, 0, 0.2);
-    color: white;
-
-    .row-infos {
-      display: flex;
-      justify-content: space-evenly;
-      width: 100%;
-    }
-
-    .room-id {
-      font-size: 1.5em;
-      border-radius: 0.5em;
-      align-self: center;
-      width: 100%;
-      border-radius: 0;
-      padding: 0.65em 0.25em;
-    }
-
-    .sets-logo {
-      font-size: 5em;
-    }
-
-    .sets-logo,
-    .score-board h4,
-    .dark-bg {
-      background-color: rgba(0, 0, 0, 0.3);
-    }
-
-    .score-board {
-      flex: 1;
-      width: 100%;
-      overflow: auto;
-    }
-  }
-
-  .game-button-bar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    // padding: 1em 0;
-
-    width: 100%;
-
-    & > .btn {
-      margin: 0;
-      padding: 1em 2em;
-    }
   }
 
   .main-content {

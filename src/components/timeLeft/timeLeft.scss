@@ -1,0 +1,18 @@
+.time-left {
+  display: flex;
+  align-items: center;
+
+  padding: 1em 0;
+  display: flex;
+  justify-content: center;
+
+  .icon{
+    font-size: 1.8em;
+    margin-right: 0.2em;
+  }
+
+  .time-left-text{
+    width: 1.2em;
+    text-align: right;
+  }
+}
