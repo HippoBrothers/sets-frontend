@@ -17,41 +17,6 @@
   height: $size * 1.54;
   width: $size;
 
-  @media (max-width: 1200px) {
-    $size: 10em;
-    height: $size * 1.54;
-    width: $size;
-  }
-
-  @media (max-width: 1050px) {
-    $size: 8.5em;
-    height: $size * 1.54;
-    width: $size;
-  }
-
-  @media (max-width: 950px) {
-    $size: 8em;
-    height: $size * 1.54;
-    width: $size;
-  }
-
-  @media (max-width: 750px) {
-    $size: 7em;
-    height: $size * 1.54;
-    width: $size;
-  }
-
-  @media (max-width: 600px) {
-    $size: 6em;
-    height: $size * 1.54;
-    width: $size;
-  }
-  @media (max-width: 500px) {
-    $size: 5em;
-    height: $size * 1.54;
-    width: $size;
-  }
-
   &:focus {
     outline: none;
   }

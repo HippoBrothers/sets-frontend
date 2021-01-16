@@ -4,11 +4,11 @@
 
   background-color: #2b2a27;
 
-  &.game-ask-deal{
+  &.game-ask-deal {
     background-color: #633f09;
   }
 
-  &.game-state--buzzed{
+  &.game-state--buzzed {
     background-color: #742020;
   }
 
@@ -24,7 +24,7 @@
       border: none;
       background-color: #581845;
       color: white;
-      &:focus{
+      &:focus {
         outline: none;
       }
     }
@@ -41,5 +41,8 @@
   .main-content {
     flex: 1;
     overflow: auto;
+    display: flex;
+    // padding: 2em;
+    padding: 5vh 5vw;
   }
 }
