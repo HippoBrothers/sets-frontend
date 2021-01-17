@@ -9,11 +9,25 @@
     width: calc(min(25vh, 30vw) * 0.65);
   }
 
-  @media (max-width: 70vh) {
-    grid-template-columns: repeat(3, 1fr);
+  @media (max-width: 950px) {
     .sets-card {
-      height: calc(min(20vh, 40vw));
-      width: calc(min(20vh, 40vw) * 0.65);
+      height: calc(min(calc((100vh - 4em) / 4.2), calc(20vw * 1.4)));
+      width: calc(min(calc((100vh - 4em) / 4.2), calc(20vw * 1.4)) * 0.65);
+    }
+    @media (max-width: 60vh) {
+      grid-template-columns: repeat(3, 1fr);
+      .sets-card {
+        height: calc(min(16vh, 40vw));
+        width: calc(min(16vh, 40vw) * 0.65);
+      }
+    }
+
+    @media (max-height: 60vw) {
+      grid-template-columns: repeat(6, 1fr);
+      .sets-card {
+        height: calc(min(25vh, 40vw));
+        width: calc(min(25vh, 40vw) * 0.65);
+      }
     }
   }
 
@@ -29,7 +43,7 @@
         width: calc(min(calc((100vh - 4em) / 3.6), calc(20vw * 1.15)) * 0.65);
       }
     }
-  
+
     @media (max-width: 80vh) {
       grid-template-columns: repeat(4, 1fr);
       .sets-card {

@@ -1,0 +1,47 @@
+.side-bar-toogle {
+  display: none;
+  width: 100%;
+  height: 4em;
+  padding: 0 1em;
+
+  width: 100%;
+  background-color: #581845;
+  color: white;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+
+  .time-left,
+  .cards-left {
+    width: 4em;
+  }
+
+  .cards-left-text {
+    display: none;
+  }
+
+  .time-left-text{
+      font-size: 1.5em;
+  }
+
+  .sets-logo {
+    flex: 1;
+  }
+
+  button {
+    border: none;
+    color: white;
+    background-color: transparent;
+    font-size: 1.5em;
+    height: 100%;
+    &:focus {
+      outline: none;
+    }
+
+    width: 1.75em;
+  }
+
+  @media (max-width: 950px) {
+    display: flex;
+  }
+}

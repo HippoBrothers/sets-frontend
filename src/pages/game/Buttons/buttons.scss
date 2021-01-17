@@ -1,0 +1,19 @@
+.game-button-bar{
+    width: 100%;
+
+    color: white;
+
+    .icon {
+      margin-right: 0.5em;
+    }
+
+    & > .btn {
+      font-weight: 600;
+      margin: 0;
+      padding: 1em 2em;
+    }
+
+    .btn-block + .btn-block {
+        margin-top: 0;
+    }
+}

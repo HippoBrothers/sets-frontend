@@ -11,6 +11,8 @@ import {
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 
+import "./buttons.scss";
+
 type ButtonsProps = {};
 
 const Buttons: React.FunctionComponent<ButtonsProps> = () => {
@@ -46,7 +48,7 @@ const Buttons: React.FunctionComponent<ButtonsProps> = () => {
   }, [dispatch, gameState, buzzingPlayer, currentPlayer]);
 
   return (
-    <>
+    <div className="game-button-bar">
       {(gameState === "waiting" || gameState === "end") && (
         <Button
           size="lg"
@@ -93,7 +95,7 @@ const Buttons: React.FunctionComponent<ButtonsProps> = () => {
           Cancel
         </Button>
       )}
-    </>
+    </div>
   );
 };
 

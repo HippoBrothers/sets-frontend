@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import Board from "../../components/board/Board";
-import Logo from "../../components/logo/Logo";
 import Sidebar from "./sidebar/Sidebar";
 
 import { useSelector } from "react-redux";
 import type { RootState } from "../../store/store";
 
 import "./GamePage.scss";
+import Buttons from "./Buttons/Buttons";
+import MobileTopBar from "./mobileTopBar/MobileTopBar";
 
 type GamePageProps = {};
 
 const GamePage: React.FunctionComponent<GamePageProps> = () => {
-  const [menuOpen, setmenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const gameState = useSelector((state: RootState) => state.room.gameState);
   const users = useSelector((state: RootState) => state.room.scoreBoard);
   const hasUserThatAskToDeal = users.filter((e) => e.meta.vote).length > 0;
@@ -22,15 +23,14 @@ const GamePage: React.FunctionComponent<GamePageProps> = () => {
         hasUserThatAskToDeal ? "game-ask-deal" : ""
       }`}
     >
-      <div className="side-bar-toogle">
-        <button type="button" onClick={() => setmenuOpen(!menuOpen)}>
-          {menuOpen ? "CLOSE" : <Logo />}
-        </button>
-      </div>
+      <MobileTopBar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <Sidebar menuOpen={menuOpen} />
 
       <div className="main-content">
         <Board />
+      </div>
+      <div className="mobile-buttons">
+        <Buttons />
       </div>
     </div>
   );

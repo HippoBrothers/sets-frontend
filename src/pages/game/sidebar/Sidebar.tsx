@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import Logo from "../../../components/logo/Logo";
 import ScoreBoard from "../../../components/scoreBoard/ScoreBoard";
 import type { RootState } from "../../../store/store";
-import Buttons from "./Buttons";
+import Buttons from "../Buttons/Buttons";
 import CardsLeft from "../../../components/cardsLeft/CardsLeft";
 import TimeLeft from "../../../components/timeLeft/TimeLeft";
 
@@ -44,9 +44,7 @@ const Sidebar: React.FunctionComponent<SidebarProps> = ({ menuOpen }) => {
         <TimeLeft />
       </div>
 
-      <div className="game-button-bar">
-        <Buttons />
-      </div>
+      <Buttons />
     </div>
   );
 };

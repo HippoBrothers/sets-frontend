@@ -7,6 +7,13 @@
       height: calc(100% - 4em);
       width: 100%;
       top: 4em;
+
+      .sets-logo, 
+      .game-infos,
+      .game-button-bar{
+          display: none;
+      }
+
     }
   }
 
@@ -82,18 +89,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    width: 100%;
-
-    .icon {
-      margin-right: 0.5em;
-    }
-
-    & > .btn {
-      font-weight: 600;
-      margin: 0;
-      padding: 1em 2em;
-    }
   }
 
   .score-board {
