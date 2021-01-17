@@ -1,12 +1,10 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useRouteMatch } from "react-router-dom";
 import { Button, FormControl } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { joinRoom } from "../../store/roomActions";
 import { RootState } from "../../store/store";
-import Clipboard from "clipboard";
-import { faLink } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ShareRoom from "../../components/shareRoom/ShareRoom";
 
 type JoinRoomProps = {};
 
@@ -29,21 +27,9 @@ const JoinRoom: React.FunctionComponent<JoinRoomProps> = () => {
     }
   }, [dispatch, username, roomID]);
 
-  useEffect(() => {
-    new Clipboard(".room-id");
-  }, []);
-
   return (
     <div className="join-room">
-      <Button
-        variant="dark"
-        className="room-id"
-        block
-        data-clipboard-text={window.location.href}
-      >
-        <FontAwesomeIcon icon={faLink} className="icon" />
-        {roomID}
-      </Button>
+      <ShareRoom />
       <div className="inputs">
         <FormControl
           placeholder="Username"

@@ -36,7 +36,7 @@ const HomePage: React.FunctionComponent<HomePageProps> = () => {
   }, [dispatch, storePlayerName, hasRoomInUrl, routeMatch.params.roomID]);
 
   return (
-    <div className="sets-page sets-page--home">
+    <div className="sets-page sets-page--home sets-page-common">
       <Link to="/" className="logo-link">
         <Logo />
       </Link>

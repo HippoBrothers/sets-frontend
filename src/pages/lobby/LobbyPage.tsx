@@ -11,36 +11,25 @@ import { startVote } from "../../store/roomActions";
 import { getCurrentUser } from "../../store/slices/roomSlice";
 
 import "./lobbyPage.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLink } from "@fortawesome/free-solid-svg-icons";
-import { RootState } from "../../store/store";
+import ShareRoom from "../../components/shareRoom/ShareRoom";
 
 type LobbyPageProps = {};
 
 const LobbyPage: React.FunctionComponent<LobbyPageProps> = () => {
   const dispatch = useDispatch();
   const myProfile = useSelector(getCurrentUser);
-  const roomID = useSelector((state: RootState) => state.room.roomID);
 
   useEffect(() => {
     new Clipboard(".room-id");
   }, []);
 
   return (
-    <div className="sets-page sets-page--lobby">
+    <div className="sets-page sets-page--lobby sets-page-common">
       <Link to="/" className="logo-link">
         <Logo />
       </Link>
       <div className="main-page-content">
-        <Button
-          variant="dark"
-          className="room-id"
-          block
-          data-clipboard-text={window.location.href}
-        >
-          <FontAwesomeIcon icon={faLink} className="icon" />
-          {roomID}
-        </Button>
+        <ShareRoom />
         <ScoreBoard />
         <Button
           size="lg"

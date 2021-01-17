@@ -4,6 +4,8 @@
   width: 100%;
 
   grid-template-columns: repeat(4, 1fr);
+  gap: 1em;
+
   .sets-card {
     height: calc(min(25vh, 30vw));
     width: calc(min(25vh, 30vw) * 0.65);
@@ -11,8 +13,8 @@
 
   @media (max-width: 950px) {
     .sets-card {
-      height: calc(min(calc((100vh - 4em) / 4.2), calc(20vw * 1.4)));
-      width: calc(min(calc((100vh - 4em) / 4.2), calc(20vw * 1.4)) * 0.65);
+      height: Min(20vh, calc(20vw * 1.4));
+      width: calc(Min(20vh, calc(20vw * 1.4)) * 0.65);
     }
     @media (max-width: 60vh) {
       grid-template-columns: repeat(3, 1fr);
@@ -34,34 +36,34 @@
   &.oversized {
     grid-template-columns: repeat(5, 1fr);
     .sets-card {
-      height: calc(min(25vh, calc((100vw - 20em) / 5)));
-      width: calc(min(25vh, calc((100vw - 20em) / 5)) * 0.65);
+      height: calc(min(20vh, 17vw));
+      width: calc(min(20vh, 17vw * 0.65));
     }
     @media (max-width: 950px) {
       .sets-card {
-        height: calc(min(calc((100vh - 4em) / 3.6), calc(20vw * 1.15)));
-        width: calc(min(calc((100vh - 4em) / 3.6), calc(20vw * 1.15)) * 0.65);
+        height: calc(Min(25em, calc(20vw * 1.15)));
+        width: calc(Min(25em, calc(20vw * 1.15)) * 0.65);
       }
     }
 
     @media (max-width: 80vh) {
       grid-template-columns: repeat(4, 1fr);
       .sets-card {
-        height: calc(min(18vh, 40vw));
-        width: calc(min(18vh, 40vw) * 0.65);
+        height: calc(min(16vh, 40vw));
+        width: calc(min(16vh, 40vw) * 0.65);
       }
     }
 
     @media (max-width: 60vh) {
       grid-template-columns: repeat(3, 1fr);
+      gap: 0.5em;
       .sets-card {
-        height: calc(min(15vh, 40vw));
-        width: calc(min(15vh, 40vw) * 0.65);
+        height: calc(min(14vh, 40vw));
+        width: calc(min(14vh, 40vw) * 0.65);
       }
     }
   }
 
-  gap: 1em;
 
   align-items: center;
   justify-items: center;

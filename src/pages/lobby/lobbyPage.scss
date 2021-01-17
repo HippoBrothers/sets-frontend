@@ -1,18 +1,9 @@
+@import "~bootstrap/scss/bootstrap-grid.scss";
 @import "../../styles/colors.scss";
 
 .sets-page.sets-page--lobby {
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  .sets-logo {
-    font-size: 10em;
-  }
-
   .main-page-content {
-    padding: 0;
-    margin: 2em;
     & > * {
       border-radius: 0.5em;
       overflow: hidden;
@@ -29,10 +20,6 @@
     background-color: $prune;
     margin: 2em 0;
 
-  }
-
-  .btn .icon{
-    margin: 0 0.5em;
   }
 
   .users-list {
