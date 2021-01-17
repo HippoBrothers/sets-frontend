@@ -16,8 +16,7 @@ const Rules: React.FunctionComponent<RulesProps> = () => {
         pharetra. Vestibulum erat wisi, condimentum sed,{" "}
         <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum,
         elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus
-        lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar
-        facilisis. Ut felis.
+        lacus enim ac dui. in turpis pulvinar facilisis. Ut felis.
       </p>
 
       <h2>Header Level 2</h2>
