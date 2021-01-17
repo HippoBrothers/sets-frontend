@@ -1,22 +1,36 @@
 @import "~bootstrap/scss/bootstrap-grid.scss";
 
-.sets-page{
-    height: 100%;
+.sets-page {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+
+  background-color: #2b2a27;
+  color: white;
+
+  .logo-link {
+    color: white;
+    text-decoration: none;
+  }
+
+  hr {
+    border-color: rgba(255, 255, 255, 0.1);
+    width: 90%;
+    margin: 4em 0;
+  }
+
+  .main-page-content {
     width: 100%;
-    overflow: auto;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
 
-    .main-page-content{
-        width: 100%;
-        max-width: 800px;
-        display: flex;
-        flex-direction: column;
-    
-        align-items: center;
+    align-items: center;
 
-        padding: 2em 1em;
-    
-        @include media-breakpoint-up(md) {
-            padding: 2em;
-        }
+    padding: 2em 1em;
+
+    @include media-breakpoint-up(md) {
+      padding: 2em;
     }
+  }
 }

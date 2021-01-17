@@ -1,12 +1,11 @@
 @import "~bootstrap/scss/bootstrap-grid.scss";
+@import "../../styles/colors.scss";
 
 .sets-page.sets-page--home {
-  background-color: orange;
-
   height: 100%;
   overflow: auto;
   padding: 0 2em;
-  
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,12 +14,16 @@
     font-size: 10em;
   }
 
-  .join-forms {   
-
+  .join-forms {
     .inputs {
       display: flex;
       flex-direction: column;
       width: 100%;
+
+      border-radius: 0.5em;
+      overflow: hidden;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+      background-color: $prune;
 
       & > *:not(:last-child) {
         margin-bottom: 1em;
@@ -42,37 +45,48 @@
       background-color: transparent;
       border: none;
       border-radius: 0;
-      border-bottom: solid 3px rgba(70, 70, 70, 0.3);
+      border-bottom: solid 3px rgba(0, 0, 0, 0.3);
 
-      color: black;
+      color: white;
+
+      padding: 1em 1.5em;
+      height: fit-content;
 
       &::placeholder {
-        color: rgba(0, 0, 0, 0.4);
+        color: rgba(255, 255, 255, 0.4);
       }
 
       &:focus {
         box-shadow: none;
-        border-color: red;
+        border-color: orange;
       }
     }
 
     .btn {
       width: 15em;
       max-width: 100%;
+      margin-top: 1em;
       &:focus {
         box-shadow: none;
       }
+
+      width: 100%;
+      border-radius: 0.5em;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
     }
 
     & > * {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       width: 100%;
-
-      &:not(:last-child) {
-        margin-bottom: 2em;
-      }
     }
+  }
+
+  .rules {
+    background-color: $prune;
+    border-radius: 0.5em;
+    overflow: hidden;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    padding: 1.5em 2em;
+    margin-bottom: 2em;
+    text-align: left;
   }
 }

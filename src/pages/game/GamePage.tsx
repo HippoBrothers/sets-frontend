@@ -19,7 +19,7 @@ const GamePage: React.FunctionComponent<GamePageProps> = () => {
 
   return (
     <div
-      className={`sets-page sets-page--game game-state-${gameState} ${
+      className={`sets-page sets-page--game game-state--${gameState} ${
         hasUserThatAskToDeal ? "game-ask-deal" : ""
       }`}
     >
