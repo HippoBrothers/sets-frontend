@@ -9,6 +9,7 @@ import { RootState } from "../../store/store";
 import JoinRoom from "./JoinRoom";
 import CreateRoom from "./CreateRoom";
 import Rules from "../../components/Rules/Rules";
+import Footer from "../../components/footer/Footer";
 
 import "./homePage.scss";
 
@@ -45,6 +46,7 @@ const HomePage: React.FunctionComponent<HomePageProps> = () => {
         <hr />
         <Rules />
       </div>
+      <Footer />
     </div>
   );
 };

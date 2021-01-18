@@ -12,6 +12,7 @@ import { getCurrentUser } from "../../store/slices/roomSlice";
 
 import "./lobbyPage.scss";
 import ShareRoom from "../../components/shareRoom/ShareRoom";
+import Footer from "../../components/footer/Footer";
 
 type LobbyPageProps = {};
 
@@ -44,6 +45,7 @@ const LobbyPage: React.FunctionComponent<LobbyPageProps> = () => {
 
         <Rules />
       </div>
+      <Footer />
     </div>
   );
 };
