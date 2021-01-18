@@ -1,0 +1,49 @@
+@import "~bootstrap/scss/bootstrap-grid.scss";
+@import "../../styles/colors.scss";
+
+.sets-page.sets-page--end {
+  .main-page-content {
+    & > * {
+      border-radius: 0.5em;
+      overflow: hidden;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  .winner {
+    // background-color: $prune;
+    padding: 1.5em 2em;
+    width: 100%;
+    text-align: center;
+    // background-color: rgba(0, 0, 0, 0.3);
+    box-shadow: none;
+
+    h1 {
+        font-size: 6em;
+        font-family: "Squada One", cursive;
+
+    } 
+    h3{
+        font-size: 2em;
+        font-family: "Squada One", cursive;
+    }
+  }
+
+  .score-board {
+    width: 100%;
+    background-color: $prune;
+    margin: 2em 0;
+  }
+
+  .users-list {
+    .user-score-container:last-child {
+      border: none;
+    }
+  }
+
+  .rules {
+    background-color: $prune;
+    padding: 1.5em 2em;
+    margin-bottom: 2em;
+  }
+}
