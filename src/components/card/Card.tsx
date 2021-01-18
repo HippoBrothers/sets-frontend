@@ -67,11 +67,14 @@ const generateShape = (
 
 const colors = [
   // Green
-  "#5ebb5e",
+  // "#5ebb5e",
+  "#009652",
   // Red
-  "#f72b30",
+  // "#f72b30",
+  "#FF7617",
   // Blue
-  "#3333ff",
+  "#860034",
+  // "#3333ff",
 ];
 
 const verticalOffset = [[75], [41, 107], [20, 75, 130]];
