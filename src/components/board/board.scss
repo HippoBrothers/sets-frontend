@@ -36,13 +36,13 @@
   &.oversized {
     grid-template-columns: repeat(5, 1fr);
     .sets-card {
-      height: calc(min(20vh, 17vw));
-      width: calc(min(20vh, 17vw * 0.65));
+      height: calc(min(26vh, 15vw));
+      width: calc(min(26vh, 15vw) * 0.65);
     }
     @media (max-width: 950px) {
       .sets-card {
-        height: calc(Min(25em, calc(20vw * 1.15)));
-        width: calc(Min(25em, calc(20vw * 1.15)) * 0.65);
+        height: calc(Min(25vh, calc(20vw * 1.15)));
+        width: calc(Min(25vh, calc(20vw * 1.15)) * 0.65);
       }
     }
 
