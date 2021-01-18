@@ -19,17 +19,19 @@
     box-shadow: none;
 
     h1 {
-        font-size: 6em;
-        font-family: "Squada One", cursive;
-
-    } 
-    h3{
-        font-size: 2em;
-        font-family: "Squada One", cursive;
+      font-size: 6em;
+      font-family: "Squada One", cursive;
+    }
+    h3 {
+      font-size: 2em;
+      font-family: "Squada One", cursive;
     }
   }
 
   .score-board {
+    h4 {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
     width: 100%;
     background-color: $prune;
     margin: 2em 0;

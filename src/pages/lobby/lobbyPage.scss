@@ -2,7 +2,6 @@
 @import "../../styles/colors.scss";
 
 .sets-page.sets-page--lobby {
-
   .main-page-content {
     & > * {
       border-radius: 0.5em;
@@ -11,15 +10,30 @@
     }
   }
 
-  h4 {
-    background-color: rgba(0, 0, 0, 0.3);
+  .lobby-text {
+    box-shadow: none;
+    font-family: "Squada One", cursive;
+    margin-bottom: 1.5em;
+    text-align: center;
+    h3{
+      font-size: 3em;
+    }
+    p {
+      font-size: 1.7em;
+    }
   }
 
   .score-board {
+    h4 {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
     width: 100%;
     background-color: $prune;
     margin: 2em 0;
 
+    .user-score{
+      display: none;
+    }
   }
 
   .users-list {

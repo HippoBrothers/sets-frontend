@@ -30,6 +30,13 @@ const LobbyPage: React.FunctionComponent<LobbyPageProps> = () => {
         <Logo />
       </Link>
       <div className="main-page-content">
+        <div className="lobby-text">
+          <h3>Waiting for other players</h3>
+          <p>
+            Invite your friends to join the romm by sending them the link below.
+          </p>
+        </div>
+
         <ShareRoom />
         <ScoreBoard />
         <Button

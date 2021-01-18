@@ -14,6 +14,7 @@ const UserScore: React.FunctionComponent<UserScoreProps> = ({ user }) => {
   const buzzingPlayer = useSelector(
     (state: RootState) => state.game.buzzingPlayer
   );
+  const gameMode = useSelector((state: RootState) => state.room.gameState);
   const hasBuzzed = user.key === buzzingPlayer;
   return (
     <div className="user-score-container buzzed voted">
@@ -21,14 +22,14 @@ const UserScore: React.FunctionComponent<UserScoreProps> = ({ user }) => {
         {user.name.substring(0, 1).toLocaleUpperCase()}
       </div>
       <span className="user-username">{user.name}</span>
-      { hasBuzzed && (
+      {hasBuzzed && (
         <Badge variant="primary" pill>
           BUZZ
         </Badge>
       )}
       {user.meta.vote && !hasBuzzed && (
         <Badge variant="info" pill className="has-voted">
-          DEAL
+          {gameMode === "waiting" || gameMode === "end" ? "START" : "DEAL"}
         </Badge>
       )}
       <span className="user-score">{user.score}</span>
