@@ -27,6 +27,8 @@ interface RoomSlice {
   secret?: string,
 
   scoreBoard: Array<Score>;
+
+  error?:string;
 }
 
 const initialState: RoomSlice = {
@@ -46,10 +48,15 @@ const roomSlice = createSlice({
       state.playerID = action.payload.playerID;
       state.playerName = action.payload.name;
       state.secret = action.payload.secret;
+
+      state.error = undefined;
     },
     updateScoreBoard(state: RoomSlice, action: PayloadAction<Array<Score>>) {
       state.scoreBoard = action.payload;
     },
+    errorOccured(state: RoomSlice, action: PayloadAction<string | undefined>) {
+      state.error = action.payload;
+    }
   },
   extraReducers: builder => {
     builder.addCase(storeHydrated, (state, action: PayloadAction<DeepPartial<RootState>>) => {
@@ -62,7 +69,7 @@ const roomSlice = createSlice({
 });
 
 export const {
-  playerConnected, updateScoreBoard, setGameState,
+  playerConnected, updateScoreBoard, setGameState, errorOccured
 } = roomSlice.actions;
 
 export const getRoomBaseState = (state: RootState): RoomSlice => state.room;

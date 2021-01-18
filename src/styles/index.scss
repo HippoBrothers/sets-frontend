@@ -1,1 +1,7 @@
-@import './pages.scss';
+
+@font-face {
+    font-family: 'Squada One';
+    src: url("./SquadaOne-Regular.ttf") format('opentype');
+}
+
+@import "./pages.scss";

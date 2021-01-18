@@ -12,6 +12,8 @@ import Rules from "../../components/Rules/Rules";
 import Footer from "../../components/footer/Footer";
 
 import "./homePage.scss";
+import { Alert } from "react-bootstrap";
+import { errorOccured } from "../../store/slices/roomSlice";
 
 type HomePageProps = {};
 
@@ -20,6 +22,8 @@ const HomePage: React.FunctionComponent<HomePageProps> = () => {
 
   const routeMatch = useRouteMatch<{ roomID?: string }>();
   const hasRoomInUrl = !!routeMatch.params.roomID;
+
+  const error = useSelector((state: RootState) => state.room.error);
 
   // Automaticaly join the last rooom
   const storePlayerName = useSelector(
@@ -42,6 +46,16 @@ const HomePage: React.FunctionComponent<HomePageProps> = () => {
         <Logo />
       </Link>
       <div className="main-page-content join-forms">
+        {error && (
+          <Alert
+            variant="danger"
+            onClose={() => dispatch(errorOccured(undefined))}
+            dismissible
+          >
+            An error occured
+          </Alert>
+        )}
+
         {hasRoomInUrl ? <JoinRoom /> : <CreateRoom />}
         <hr />
         <Rules />
