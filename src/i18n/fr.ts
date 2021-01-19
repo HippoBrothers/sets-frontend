@@ -20,7 +20,7 @@ const fr = {
 
     game_over: "GAME OVER",
 
-    rules_main_header: "REGLES",
+    rules_main_header: "RÈGLES",
   },
 };
 
