@@ -218,7 +218,7 @@ const Rules: React.FunctionComponent<RulesProps> = () => {
               <div className="set-sample">
                 <Card color={2} number={2} shape={1} fill={2} id={0} />
                 <Card color={2} number={2} shape={2} fill={1} id={0} />
-                <Card color={2} number={2} shape={2} fill={3} id={0} />
+                <Card color={2} number={2} shape={3} fill={3} id={0} />
               </div>
               <p className="sample-text">
                 La couleur et le nombre sont identiques, la forme et le
