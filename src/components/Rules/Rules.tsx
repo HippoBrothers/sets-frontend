@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faConciergeBell, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import Card from "../card/Card";
 import { useTranslation } from "react-i18next";
+import CopainsPotames from "./CopainPopotame.png";
 
 import "./rules.scss";
 
@@ -16,7 +17,13 @@ const Rules: React.FunctionComponent<RulesProps> = () => {
 
   return (
     <div className="rules">
-      <h1>{t('rules_main_header')}</h1>
+      <h1>{t("rules_main_header")}</h1>
+      <img
+        src={CopainsPotames}
+        alt="illustration"
+        height={150}
+        className="img-illustration"
+      />
       <h2>But du jeu</h2>
       <div className="rules-part">
         <p>

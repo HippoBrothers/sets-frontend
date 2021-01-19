@@ -40,6 +40,11 @@
     margin-bottom: 1em;
   }
 
+  .img-illustration{
+    display: block;
+    margin: 1em auto;
+  }
+
   .row {
     @include media-breakpoint-up(md) {
       .col-md-6:not(:last-child) {
