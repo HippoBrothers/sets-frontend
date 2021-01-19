@@ -45,18 +45,20 @@ const HomePage: React.FunctionComponent<HomePageProps> = () => {
       <Link to="/" className="logo-link">
         <Logo />
       </Link>
-      <div className="main-page-content join-forms">
-        {error && (
-          <Alert
-            variant="danger"
-            onClose={() => dispatch(errorOccured(undefined))}
-            dismissible
-          >
-            An error occured
-          </Alert>
-        )}
+      <div className="main-page-content">
+        <div className={"join-forms"}>
+          {error && (
+            <Alert
+              variant="danger"
+              onClose={() => dispatch(errorOccured(undefined))}
+              dismissible
+            >
+              An error occured
+            </Alert>
+          )}
 
-        {hasRoomInUrl ? <JoinRoom /> : <CreateRoom />}
+          {hasRoomInUrl ? <JoinRoom /> : <CreateRoom />}
+        </div>
         <hr />
         <Rules />
       </div>

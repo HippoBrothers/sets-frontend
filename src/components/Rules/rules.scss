@@ -1,0 +1,154 @@
+@import "~bootstrap/scss/bootstrap-grid.scss";
+
+.rules {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: "Squada One", cursive;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  h2 {
+    background-color: rgba(0, 0, 0, 0.3);
+    margin: 0.5em -2rem 0.25em -2rem;
+    padding: 0.25em 2em;
+  }
+
+  h4 {
+    text-align: center;
+    margin: 0.5em 0;
+  }
+
+  p {
+    padding: 0 0.5em;
+    text-align: justify;
+  }
+
+  .icon {
+    margin-right: 0.5em;
+  }
+
+  .btn {
+    display: block;
+    width: 75%;
+    margin: 0 auto;
+    border-radius: 0.5em;
+    margin-bottom: 1em;
+  }
+
+  .row {
+    @include media-breakpoint-up(md) {
+      .col-md-6:not(:last-child) {
+        border-right: solid 1px rgba(0, 0, 0, 0.3);
+      }
+    }
+  }
+
+  .features {
+    .feature {
+      padding-bottom: 1em;
+    }
+    @include media-breakpoint-down(sm) {
+      .feature {
+        width: fit-content;
+        margin: auto;
+        &:not(:last-child) {
+          border-bottom: solid 1px rgba(0, 0, 0, 0.3);
+        }
+      }
+    }
+    @include media-breakpoint-up(md) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin: 0 -2rem;
+
+      .set-sample .sets-card {
+        width: 5.5em;
+        height: 5.5em * 1.54;
+        margin: 0 0.5em;
+      }
+    }
+  }
+
+  .part-example {
+    .sample-text {
+      text-align: center;
+      padding: 1em 2em;
+      font-size: 0.9em;
+      margin-bottom: 0;
+    }
+    @include media-breakpoint-up(md) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin: 0 -2rem;
+
+      .samples {
+        margin-top: 2em;
+      }
+
+      .samples-cat:not(:last-child) {
+        border-right: solid 1px rgba(0, 0, 0, 0.3);
+      }
+
+      .set-sample .sets-card {
+        width: 5.5em;
+        height: 5.5em * 1.54;
+        margin: 0 0.5em;
+      }
+
+      .sample-text {
+        font-size: 0.8em;
+        opacity: 0.8;
+        line-height: 1.1em;
+        height: 3.3em + 2em;
+      }
+    }
+    @include media-breakpoint-down(sm) {
+      .sample {
+        padding-top: 1em;
+        &:not(:last-child) {
+          border-bottom: solid 1px rgba(0, 0, 0, 0.3);
+        }
+      }
+      .samples-cat {
+        margin-top: 2em;
+      }
+    }
+  }
+
+  .set-sample {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    .set-sample--card {
+      display: flex;
+      flex-direction: column-reverse;
+      text-align: center;
+      margin-top: 0.5em;
+
+      .card-feature {
+        text-transform: capitalize;
+        font-family: "Squada One", cursive;
+        margin-bottom: 0;
+        text-align: center;
+      }
+    }
+
+    .sets-card {
+      width: 7em;
+      height: 7em * 1.54;
+      margin: 0.5em 0.5em;
+    }
+  }
+
+  .rules-part {
+    padding-left: 1em;
+  }
+}
