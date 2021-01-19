@@ -13,6 +13,7 @@ import { getCurrentUser } from "../../store/slices/roomSlice";
 import "./lobbyPage.scss";
 import ShareRoom from "../../components/shareRoom/ShareRoom";
 import Footer from "../../components/footer/Footer";
+import { useTranslation } from "react-i18next";
 
 type LobbyPageProps = {};
 
@@ -24,6 +25,8 @@ const LobbyPage: React.FunctionComponent<LobbyPageProps> = () => {
     new Clipboard(".room-id");
   }, []);
 
+  const { t } = useTranslation();
+
   return (
     <div className="sets-page sets-page--lobby sets-page-common">
       <Link to="/" className="logo-link">
@@ -31,9 +34,9 @@ const LobbyPage: React.FunctionComponent<LobbyPageProps> = () => {
       </Link>
       <div className="main-page-content">
         <div className="lobby-text">
-          <h3>Waiting for other players</h3>
+          <h3>{t('lobby_header')}</h3>
           <p>
-            Invite your friends to join the room by sending them the link over.
+            {t('lobby_text')}
           </p>
         </div>
 
@@ -45,7 +48,7 @@ const LobbyPage: React.FunctionComponent<LobbyPageProps> = () => {
           variant={myProfile?.meta.vote ? "danger" : "warning"}
           onClick={() => dispatch(startVote())}
         >
-          Ready
+          {t("button_ready")}
         </Button>
 
         <hr />

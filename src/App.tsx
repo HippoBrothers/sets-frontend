@@ -9,6 +9,8 @@ import "./styles/index.scss";
 import { useSelector } from "react-redux";
 import { RootState } from "./store/store";
 
+import "./i18n/initI18n.ts";
+
 function App() {
   const gameMode = useSelector((state: RootState) => state.room.gameState);
 

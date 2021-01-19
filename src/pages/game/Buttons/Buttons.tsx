@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { startVote } from "../../../store/roomActions";
 import { buzz, validateCards, voteAddCards } from "../../../store/gameActions";
 import { RootState } from "../../../store/store";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useTranslation } from "react-i18next";
+
 import {
   faConciergeBell,
   faEyeSlash,
@@ -47,18 +48,10 @@ const Buttons: React.FunctionComponent<ButtonsProps> = () => {
     };
   }, [dispatch, gameState, buzzingPlayer, currentPlayer]);
 
+  const { t } = useTranslation();
+
   return (
     <div className="game-button-bar">
-      {(gameState === "waiting" || gameState === "end") && (
-        <Button
-          size="lg"
-          block
-          variant="warning"
-          onClick={() => dispatch(startVote())}
-        >
-          Start
-        </Button>
-      )}
       {gameState === "playing" && (
         <>
           <Button
@@ -68,7 +61,7 @@ const Buttons: React.FunctionComponent<ButtonsProps> = () => {
             onClick={() => dispatch(buzz())}
           >
             <FontAwesomeIcon icon={faConciergeBell} className="icon" />
-            SET !
+            {t("button_set")}
           </Button>
           <Button
             block
@@ -76,7 +69,7 @@ const Buttons: React.FunctionComponent<ButtonsProps> = () => {
             onClick={() => dispatch(voteAddCards())}
           >
             <FontAwesomeIcon icon={faEyeSlash} className="icon" />
-            DEAL
+            {t("button_deal")}
           </Button>
         </>
       )}
@@ -92,7 +85,7 @@ const Buttons: React.FunctionComponent<ButtonsProps> = () => {
           onClick={() => dispatch(validateCards())}
         >
           <FontAwesomeIcon icon={faTimes} className="icon" />
-          Cancel
+          {t("button_cancel")}
         </Button>
       )}
     </div>

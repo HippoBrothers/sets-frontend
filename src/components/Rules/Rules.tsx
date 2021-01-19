@@ -5,15 +5,18 @@ import { Button, Col, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faConciergeBell, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import Card from "../card/Card";
+import { useTranslation } from "react-i18next";
 
 import "./rules.scss";
 
 type RulesProps = {};
 
 const Rules: React.FunctionComponent<RulesProps> = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="rules">
-      <h1>Rules</h1>
+      <h1>{t('rules_main_header')}</h1>
       <h2>But du jeu</h2>
       <div className="rules-part">
         <p>
@@ -193,35 +196,37 @@ const Rules: React.FunctionComponent<RulesProps> = () => {
         <div className="samples-cat">
           <h4>Des sets qui fonctionnent</h4>
           <div className="samples">
-            <div className='sample'>
+            <div className="sample">
               <div className="set-sample">
                 <Card color={1} number={1} shape={1} fill={1} id={0} />
                 <Card color={2} number={1} shape={1} fill={1} id={0} />
                 <Card color={3} number={1} shape={1} fill={1} id={0} />
               </div>
-              <p className='sample-text'>
+              <p className="sample-text">
                 La couleur est differente, le nombre, la forme et le remplissage
                 sont identiques
               </p>
             </div>
-            <div className='sample'>
+            <div className="sample">
               <div className="set-sample">
                 <Card color={2} number={2} shape={1} fill={2} id={0} />
                 <Card color={2} number={2} shape={2} fill={1} id={0} />
                 <Card color={2} number={2} shape={2} fill={3} id={0} />
               </div>
-              <p className='sample-text'>
+              <p className="sample-text">
                 La couleur et le nombre sont identiques, la forme et le
                 remplissage sont differents
               </p>
             </div>
-            <div className='sample'>
+            <div className="sample">
               <div className="set-sample">
                 <Card color={1} number={3} shape={3} fill={2} id={0} />
                 <Card color={2} number={1} shape={2} fill={3} id={0} />
                 <Card color={3} number={2} shape={1} fill={1} id={0} />
               </div>
-              <p className='sample-text'>Les 4 caracteristiques sont différentes</p>
+              <p className="sample-text">
+                Les 4 caracteristiques sont différentes
+              </p>
             </div>
           </div>
         </div>
@@ -229,36 +234,36 @@ const Rules: React.FunctionComponent<RulesProps> = () => {
         <div className="samples-cat">
           <h4>Des sets qui ne fonctionnent pas</h4>
           <div className="samples">
-            <div className='sample'>
+            <div className="sample">
               <div className="set-sample">
                 <Card color={2} number={1} shape={1} fill={3} id={0} />
                 <Card color={2} number={1} shape={2} fill={3} id={0} />
                 <Card color={2} number={3} shape={1} fill={3} id={0} />
               </div>
-              <p className='sample-text'>
+              <p className="sample-text">
                 C'est faux, La couleur est bien identiques, le remplissage aussi
                 mais il y à 2 cartes où les nombres sont identiques, et 2 où la
                 forme est identique.
               </p>
             </div>
-            <div className='sample'>
+            <div className="sample">
               <div className="set-sample">
                 <Card color={3} number={1} shape={3} fill={2} id={0} />
                 <Card color={3} number={2} shape={3} fill={1} id={0} />
                 <Card color={3} number={3} shape={3} fill={1} id={0} />
               </div>
-              <p className='sample-text'>
+              <p className="sample-text">
                 Tout est bons sauf pour 2 cartes qui ont le mêmes remplissage.
                 Le <strong>Set</strong> est faux.
               </p>
             </div>
-            <div className='sample'>
+            <div className="sample">
               <div className="set-sample">
                 <Card color={3} number={1} shape={2} fill={2} id={0} />
                 <Card color={2} number={2} shape={2} fill={1} id={0} />
                 <Card color={2} number={3} shape={2} fill={2} id={0} />
               </div>
-              <p className='sample-text'>
+              <p className="sample-text">
                 C'est faux, 2 cartes seulement ont le mêmes remplissage et 2
                 cartes ont la même couleur.
               </p>

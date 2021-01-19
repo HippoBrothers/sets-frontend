@@ -3,6 +3,7 @@ import { FormControl, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { createRoom } from "../../store/roomActions";
 import { RootState } from "../../store/store";
+import { useTranslation } from "react-i18next";
 
 type CreateRoomProps = {};
 
@@ -21,11 +22,13 @@ const CreateRoom: React.FunctionComponent<CreateRoomProps> = () => {
     }
   }, [dispatch, username]);
 
+  const { t } = useTranslation();
+
   return (
     <div className="new-room">
       <div className="inputs">
         <FormControl
-          placeholder="Username"
+          placeholder={t('placeholder_username')}
           name="player-name"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
@@ -37,7 +40,7 @@ const CreateRoom: React.FunctionComponent<CreateRoomProps> = () => {
         variant="warning"
         size="lg"
       >
-        Create Room
+        {t("button_create_room")}
       </Button>
     </div>
   );

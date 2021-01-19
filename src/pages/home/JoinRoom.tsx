@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { joinRoom } from "../../store/roomActions";
 import { RootState } from "../../store/store";
 import ShareRoom from "../../components/shareRoom/ShareRoom";
+import { useTranslation } from "react-i18next";
 
 type JoinRoomProps = {};
 
@@ -27,12 +28,14 @@ const JoinRoom: React.FunctionComponent<JoinRoomProps> = () => {
     }
   }, [dispatch, username, roomID]);
 
+  const { t } = useTranslation();
+
   return (
     <div className="join-room">
       <ShareRoom />
       <div className="inputs">
         <FormControl
-          placeholder="Username"
+          placeholder={t("placeholder_username")}
           name="player-name"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
@@ -53,7 +56,7 @@ const JoinRoom: React.FunctionComponent<JoinRoomProps> = () => {
         size="lg"
         disabled={username.length < 3 || roomID.length < 9}
       >
-        Join Room
+        {t("button_join_room")}
       </Button>
     </div>
   );

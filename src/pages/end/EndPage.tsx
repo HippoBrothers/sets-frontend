@@ -9,6 +9,8 @@ import ScoreBoard from "../../components/scoreBoard/ScoreBoard";
 
 import { startVote } from "../../store/roomActions";
 import { getCurrentUser } from "../../store/slices/roomSlice";
+import { useTranslation } from "react-i18next";
+
 
 import "./endPage.scss";
 
@@ -17,6 +19,7 @@ type EndPageProps = {};
 const EndPage: React.FunctionComponent<EndPageProps> = () => {
   const dispatch = useDispatch();
   const myProfile = useSelector(getCurrentUser);
+  const { t } = useTranslation();
 
   return (
     <div className="sets-page sets-page--end sets-page-common">
@@ -25,7 +28,7 @@ const EndPage: React.FunctionComponent<EndPageProps> = () => {
       </Link>
       <div className="main-page-content">
         <div className="winner">
-          <h1>GAME OVER</h1>
+          <h1>{t("game_over")}</h1>
           {/* <h3>WINNER : </h3> */}
         </div>
 
@@ -36,7 +39,7 @@ const EndPage: React.FunctionComponent<EndPageProps> = () => {
           variant={myProfile?.meta.vote ? "danger" : "warning"}
           onClick={() => dispatch(startVote())}
         >
-          Play again
+          {t("button_play_again")}
         </Button>
 
         <hr />
